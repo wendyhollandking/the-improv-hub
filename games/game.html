@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="../modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="../modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="../modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="../modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="../modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="../modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT — populated by JS from ?id= URL param
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Not-found state (shown if game id doesn't match) -->
+      <div id="game-not-found" hidden>
+        <div class="game-page-body">
+          <a href="library.html" class="back-link">← Back to Games Library</a>
+          <p style="color: var(--color-gray-text); margin-top: var(--space-xl);">
+            Game not found. <a href="library.html">Browse all games →</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Game detail (populated by JS) -->
+      <div id="game-detail" hidden>
+
+        <!-- Hero banner -->
+        <header class="game-page-hero" id="game-hero">
+          <div class="game-page-hero-inner">
+            <a href="library.html" class="back-link-hero">← Games library</a>
+            <div class="game-hero-badges" id="game-hero-badges"></div>
+            <h1 class="game-page-title" id="game-page-title"></h1>
+            <p class="game-page-desc" id="game-page-desc"></p>
+            <div class="game-page-facts" id="game-page-facts"></div>
+          </div>
+        </header>
+
+        <!-- Body content -->
+        <div class="game-page-body">
+
+          <!-- Good for + category tags -->
+          <div class="game-page-meta" id="game-page-meta"></div>
+
+          <!-- Rules -->
+          <section class="game-page-section" id="game-rules-section" aria-labelledby="rules-heading">
+            <h2 id="rules-heading">How to play</h2>
+            <ol class="game-page-rules" id="game-page-rules"></ol>
+          </section>
+
+          <!-- Example -->
+          <section class="game-page-section game-page-example" id="game-example-section" aria-labelledby="example-heading" hidden>
+            <h2 id="example-heading">Example</h2>
+            <div class="example-block" id="game-page-example"></div>
+          </section>
+
+          <!-- Variations -->
+          <section class="game-page-section" id="game-variations-section" aria-labelledby="variations-heading" hidden>
+            <h2 id="variations-heading">Variations</h2>
+            <ul class="game-page-variations" id="game-page-variations"></ul>
+          </section>
+
+          <!-- Prompts -->
+          <section class="game-page-section" id="game-prompts-section" aria-labelledby="prompts-heading" hidden>
+            <h2 id="prompts-heading">Prompts &amp; suggestions</h2>
+            <ol class="game-page-prompts" id="game-page-prompts"></ol>
+          </section>
+
+          <!-- AI play CTA -->
+          <div class="game-page-ai-cta" id="game-page-ai-cta" hidden>
+            <p>This game has an AI-powered version you can play solo.</p>
+            <a href="#" id="game-ai-link" class="btn btn-yellow btn-lg">✨ Play with AI →</a>
+          </div>
+
+        </div><!-- /game-page-body -->
+      </div><!-- /game-detail -->
+
+    </main>
+  </div><!-- /site-wrapper -->
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="games-data.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+  /* ============================================================
+     game.html — single-game detail page
+     Reads ?id=game-slug from the URL and renders that game's
+     full content from GAMES_DATA.
+  ============================================================ */
+  (function () {
+
+    var MODULE_COLORS = {
+      1: 'var(--module-1-color)',
+      2: 'var(--module-2-color)',
+      3: 'var(--module-3-color)',
+      4: 'var(--module-4-color)',
+      5: 'var(--module-5-color)',
+      6: 'var(--module-6-color)',
+    };
+
+    var CATEGORY_LABELS = {
+      'warm-ups':      'Warm-up',
+      'yes-and':       'Yes, And',
+      'characters':    'Characters',
+      'scenes':        'Scenes',
+      'comedy':        'Comedy',
+      'musical':       'Musical',
+      'solo-friendly': 'Solo-friendly'
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var params = new URLSearchParams(window.location.search);
+      var gameId = params.get('id');
+
+      if (!gameId || typeof GAMES_DATA === 'undefined') {
+        showNotFound();
+        return;
+      }
+
+      var game = GAMES_DATA.find(function (g) { return g.id === gameId; });
+      if (!game) {
+        showNotFound();
+        return;
+      }
+
+      renderGame(game);
+    });
+
+
+    function showNotFound() {
+      document.getElementById('game-not-found').hidden = false;
+    }
+
+
+    function renderGame(game) {
+      /* Update page title */
+      document.title = game.title + ' — The Improv Hub';
+
+      /* ---- Hero ---- */
+      var heroEl  = document.getElementById('game-hero');
+      var color   = game.module ? MODULE_COLORS[game.module] : 'var(--color-teal)';
+      heroEl.style.setProperty('--game-color', color);
+
+      /* Badges: module + AI */
+      var badges = '';
+      if (game.module)     badges += '<span class="game-hero-badge">Module ' + game.module + '</span>';
+      if (game.aiPlayable) badges += '<span class="game-hero-badge badge-ai-hero">✨ Play with AI</span>';
+      document.getElementById('game-hero-badges').innerHTML = badges;
+
+      document.getElementById('game-page-title').textContent = game.title;
+      document.getElementById('game-page-desc').textContent  = game.description;
+
+      /* Quick facts row */
+      var factsHtml = '';
+      factsHtml += '<span class="game-fact">👥 ' + game.players + ' players</span>';
+      if (game.energyLevel)  factsHtml += '<span class="game-fact">⚡ ' + game.energyLevel + ' energy</span>';
+      if (game.timeEstimate) factsHtml += '<span class="game-fact">⏱ ' + game.timeEstimate + '</span>';
+      document.getElementById('game-page-facts').innerHTML = factsHtml;
+
+      /* ---- Meta: good for + categories ---- */
+      var metaHtml = '';
+      if (game.goodFor) {
+        metaHtml += '<p class="game-good-for"><strong>Good for:</strong> ' + game.goodFor + '</p>';
+      }
+      var tagsHtml = game.categories.map(function (cat) {
+        var label = CATEGORY_LABELS[cat] || cat;
+        return '<span class="tag tag-' + cat + '">' + label + '</span>';
+      }).join('');
+      if (tagsHtml) {
+        metaHtml += '<div class="game-category-tags">' + tagsHtml + '</div>';
+      }
+      document.getElementById('game-page-meta').innerHTML = metaHtml;
+
+      /* ---- Rules ---- */
+      var rulesEl = document.getElementById('game-page-rules');
+      rulesEl.innerHTML = game.rules.map(function (r) {
+        return '<li>' + r + '</li>';
+      }).join('');
+
+      /* ---- Example ---- */
+      if (game.example) {
+        var exampleEl = document.getElementById('game-page-example');
+        exampleEl.innerHTML = game.example.replace(/\n/g, '<br>');
+        document.getElementById('game-example-section').hidden = false;
+      }
+
+      /* ---- Variations ---- */
+      if (game.variations && game.variations.length) {
+        var varEl = document.getElementById('game-page-variations');
+        varEl.innerHTML = game.variations.map(function (v) {
+          return '<li>' + v + '</li>';
+        }).join('');
+        document.getElementById('game-variations-section').hidden = false;
+      }
+
+      /* ---- Prompts ---- */
+      if (game.prompts && game.prompts.length) {
+        var promptEl = document.getElementById('game-page-prompts');
+        promptEl.innerHTML = game.prompts.map(function (p) {
+          return '<li>' + p + '</li>';
+        }).join('');
+        document.getElementById('game-prompts-section').hidden = false;
+      }
+
+      /* ---- AI play CTA ---- */
+      if (game.aiPlayable && game.module) {
+        var aiLink = document.getElementById('game-ai-link');
+        aiLink.href = '../modules/module' + game.module + '.html#play';
+        document.getElementById('game-page-ai-cta').hidden = false;
+      }
+
+      /* Show the detail section */
+      document.getElementById('game-detail').hidden = false;
+    }
+
+  })();
+  </script>
+
+</body>
+</html>

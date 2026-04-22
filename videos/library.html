@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Library — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="library.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="../modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="../modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="../modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="../modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="../modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="../modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="../games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Hero -->
+      <section class="hero library-hero" aria-labelledby="library-title">
+        <p class="hero-eyebrow">Watch and learn</p>
+        <h1 class="hero-title" id="library-title">Video Library</h1>
+        <p class="hero-subtitle" style="margin-bottom: 0;">
+          A few handpicked clips from improv shows, games, interviews, and sketch comedy to highlight key improv concepts.
+        </p>
+      </section>
+
+      <!-- Filter bar -->
+      <div class="video-filter-bar" role="group" aria-label="Filter videos by category">
+        <button class="filter-tag active" data-filter="all"       aria-pressed="true">All</button>
+        <button class="filter-tag" data-filter="yes-and"          aria-pressed="false">Yes, And</button>
+        <button class="filter-tag" data-filter="characters"       aria-pressed="false">Characters</button>
+        <button class="filter-tag" data-filter="scenes"           aria-pressed="false">Scenes</button>
+        <button class="filter-tag" data-filter="comedy"           aria-pressed="false">Comedy patterns</button>
+        <button class="filter-tag" data-filter="sketch"           aria-pressed="false">Sketch</button>
+        <button class="filter-tag" data-filter="in-course"        aria-pressed="false">Used in course</button>
+      </div>
+
+      <!-- Video grid -->
+      <div class="video-library-grid" id="video-grid" aria-live="polite">
+        <!-- Rendered by inline JS below -->
+      </div>
+
+    </main>
+  </div><!-- /site-wrapper -->
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="../js/navigation.js"></script>
+
+  <script>
+  /* ============================================================
+     Video Library — data + render
+  ============================================================ */
+  (function () {
+
+    var VIDEOS = [
+      {
+        id: 'ptTnCHa-3pI',
+        title: 'Rebecca Wahls: Yes, And — The Power of Improv in Everyday Life',
+        source: 'TEDx',
+        categories: ['yes-and'],
+        watchFor: 'How "yes, and" works as a life skill, not just an improv rule. Great explanation of the difference between accepting and blocking.',
+        length: '~12 min',
+        module: 1,
+        clean: true
+      },
+      {
+        id: 'NmafmRIeet0',
+        title: 'Tina Fey on the Rules of Improv',
+        source: 'Google Talk',
+        categories: ['yes-and'],
+        watchFor: 'Tina Fey shares how improv changed her career and breaks down the core rules. Students will recognize these from the course.',
+        length: '~5 min',
+        module: 2,
+        clean: true
+      },
+      {
+        id: 'Yqi2Bru_0-k',
+        title: 'Party Quirks — Whose Line Is It Anyway?',
+        source: 'Whose Line Is It Anyway?',
+        categories: ['characters'],
+        watchFor: 'How performers commit physically to characters and how the host reads clues. Great examples of character exaggeration and commitment.',
+        length: '~5 min',
+        module: 3,
+        clean: true
+      },
+      {
+        id: '5ID8_fuVvfA',
+        title: 'Freeze Tag — Drew Carey\'s Improvaganza',
+        source: "Drew Carey's Improvaganza",
+        categories: ['scenes'],
+        watchFor: 'How physical positions inspire completely new scenes. Fast transitions and immediate commitment to new ideas.',
+        length: '~4 min',
+        module: 4,
+        clean: true
+      },
+      {
+        id: 'coZARWbdNls',
+        title: 'Keegan-Michael Key on How Comedy Works',
+        source: 'Interview',
+        categories: ['comedy', 'sketch'],
+        watchFor: 'Key explains that improv is about "walking backward" and discovering, not thinking fast. Then breaks down how the Substitute Teacher sketch sets up its rules.',
+        length: '~3 min',
+        module: 5,
+        clean: true
+      },
+      {
+        id: 'Dd7FixvoKBw',
+        title: 'Key & Peele: Substitute Teacher',
+        source: 'Key & Peele',
+        categories: ['sketch', 'characters'],
+        watchFor: 'A perfect example of sketch structure: setup, game (mispronouncing names), escalation. Watch how the rules are established in the first 30 seconds.',
+        length: '~4 min',
+        module: 5,
+        clean: true
+      },
+      {
+        id: 'cVsQLlk-T0s',
+        title: 'More Cowbell — SNL',
+        source: 'Saturday Night Live',
+        categories: ['sketch'],
+        watchFor: 'A masterclass in finding a game and playing it all the way out. The game is simple (more cowbell solves everything) and the escalation comes from Will Ferrell\'s physicality getting bigger and bigger.',
+        length: '~5 min',
+        module: 6,
+        clean: true
+      },
+      {
+        id: 'A2KCGQhVRTE',
+        title: 'Lobster Bisque — Studio C',
+        source: 'Studio C',
+        categories: ['sketch'],
+        watchFor: 'No matter what the couple orders, the waiter finds his way back to lobster bisque. Watch how one simple game — always ending up at the same answer — carries the whole sketch, right through the musical ending.',
+        length: '~4 min',
+        module: 6,
+        clean: true
+      },
+      {
+        id: '8F9jXYOH2c0',
+        title: 'Scott Sterling Soccer — Studio C',
+        source: 'Studio C',
+        categories: ['comedy', 'sketch'],
+        watchFor: 'Pure escalation. The same joke keeps happening and gets funnier every time because of the commitment, commentary, and reactions. A perfect example of repetition and heightening.',
+        length: '~4 min',
+        module: null,
+        clean: true
+      },
+      {
+        id: 'tkxRzV3gtDc',
+        title: 'Questions Only on a Plane — Whose Line Is It Anyway?',
+        source: 'Whose Line Is It Anyway?',
+        categories: ['yes-and'],
+        watchFor: 'The Questions Only game in action. Every line has to be a question. Watch how performers build scenes using only questions and how quickly people slip up.',
+        length: '~4 min',
+        module: null,
+        clean: true
+      },
+      {
+        id: '1ukD56qosRA',
+        title: 'Sound Effects: Tarzan and Jane — Whose Line Is It Anyway?',
+        source: 'Whose Line Is It Anyway?',
+        categories: ['scenes'],
+        watchFor: 'Two performers act out a scene while audience members provide all the sound effects. Watch how the performers react to unexpected sounds and incorporate them.',
+        length: '~4 min',
+        module: null,
+        clean: true
+      },
+      {
+        id: 'JCjXuXDamNE',
+        title: 'Pillars Game — Live with Kelly and Mark',
+        source: 'Whose Line Is It Anyway?',
+        categories: ['scenes'],
+        watchFor: 'Performers do a scene and must incorporate random lines from audience members on stage as "pillars." Great example of accepting unexpected offers and building them into a scene.',
+        length: '~5 min',
+        module: null,
+        clean: true
+      },
+      {
+        id: 'qnlpQ1XSbTQ',
+        title: 'Expert Cast — Ellen',
+        source: 'Ellen',
+        categories: ['characters'],
+        watchFor: 'Performers play experts on topics they know nothing about and must act completely confident while making everything up. Watch how they build on each other\'s nonsense.',
+        length: '~4 min',
+        module: null,
+        clean: true
+      },
+      {
+        id: 'bqlBCEr_qb4',
+        title: 'Improv Game with Keegan-Michael Key',
+        source: 'Live Kelly and Mark',
+        categories: ['scenes'],
+        watchFor: 'Keegan-Michael Key plays an improv game live on morning television. Watch how a trained improv performer commits completely and keeps the energy up even in an uncontrolled environment.',
+        length: '~4 min',
+        module: null,
+        clean: true
+      }
+    ];
+
+    /* Category display labels */
+    var CAT_LABELS = {
+      'yes-and':    'Yes, And',
+      'characters': 'Characters',
+      'scenes':     'Scenes',
+      'comedy':     'Comedy',
+      'sketch':     'Sketch'
+    };
+
+    /* Module page paths (from videos/ directory) */
+    var MODULE_LINKS = {
+      1: '../modules/module1.html#watch',
+      2: '../modules/module2.html#watch',
+      3: '../modules/module3.html#watch',
+      4: '../modules/module4.html#watch',
+      5: '../modules/module5.html#watch',
+      6: '../modules/module6.html#watch',
+    };
+
+    var activeFilter = 'all';
+
+
+    /* ---- Build a single video card ---- */
+
+    function buildCard(video) {
+      var thumbUrl   = 'https://img.youtube.com/vi/' + video.id + '/hqdefault.jpg';
+      var youtubeUrl = 'https://www.youtube.com/watch?v=' + video.id;
+
+      /* Category tags */
+      var tagsHtml = video.categories.map(function (cat) {
+        var label = CAT_LABELS[cat] || cat;
+        return '<span class="tag tag-' + cat + '">' + label + '</span>';
+      }).join('');
+
+      /* Module badge */
+      var moduleBadge = video.module
+        ? '<a href="' + MODULE_LINKS[video.module] + '" class="badge-module-link" title="Used in Module ' + video.module + '">Module ' + video.module + '</a>'
+        : '';
+
+      var article = document.createElement('article');
+      article.className = 'video-card';
+      article.dataset.categories = video.categories.join(' ');
+      article.dataset.module = video.module || '';
+
+      /* Thumbnail — clicking swaps it for an inline embed */
+      var thumbDiv = document.createElement('div');
+      thumbDiv.className = 'video-thumb video-thumb-clickable';
+      thumbDiv.setAttribute('role', 'button');
+      thumbDiv.setAttribute('aria-label', 'Play ' + video.title);
+      thumbDiv.setAttribute('tabindex', '0');
+      thumbDiv.innerHTML =
+        '<img src="' + thumbUrl + '" alt="" loading="lazy">' +
+        '<div class="video-thumb-play" aria-hidden="true">' +
+          '<div class="video-thumb-play-icon">▶</div>' +
+        '</div>';
+
+      function embedVideo() {
+        thumbDiv.innerHTML =
+          '<iframe ' +
+            'src="https://www.youtube.com/embed/' + video.id + '?autoplay=1" ' +
+            'title="' + video.title + '" ' +
+            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+            'allowfullscreen>' +
+          '</iframe>';
+        thumbDiv.classList.add('is-playing');
+      }
+
+      thumbDiv.addEventListener('click', embedVideo);
+      thumbDiv.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); embedVideo(); }
+      });
+
+      /* Remaining card HTML */
+      var bodyDiv = document.createElement('div');
+      bodyDiv.innerHTML =
+        '<div class="video-card-body">' +
+          '<div class="video-card-meta">' +
+            '<span class="video-card-source">' + video.source + '</span>' +
+            '<span aria-hidden="true" style="color:var(--color-border)">·</span>' +
+            tagsHtml +
+          '</div>' +
+          '<h2 class="video-card-title">' + video.title + '</h2>' +
+          '<p class="video-card-watch-for">' +
+            '<span class="video-card-watch-label">Watch for: </span>' +
+            video.watchFor +
+          '</p>' +
+        '</div>' +
+        '<div class="video-card-footer">' +
+          '<div class="video-card-badges">' +
+            '<span class="badge-length">' + video.length + '</span>' +
+            moduleBadge +
+          '</div>' +
+          '<a href="' + youtubeUrl + '" target="_blank" rel="noopener" class="btn btn-teal btn-sm">Open in YouTube ↗</a>' +
+        '</div>';
+
+      article.appendChild(thumbDiv);
+      /* appendChild moves child nodes, so we append bodyDiv's children individually */
+      while (bodyDiv.firstChild) {
+        article.appendChild(bodyDiv.firstChild);
+      }
+
+      return article;
+    }
+
+
+    /* ---- Render grid based on active filter ---- */
+
+    function renderVideos() {
+      var grid = document.getElementById('video-grid');
+      grid.innerHTML = '';
+
+      var filtered = VIDEOS.filter(function (v) {
+        if (activeFilter === 'all') return true;
+        if (activeFilter === 'in-course') return v.module !== null;
+        return v.categories.indexOf(activeFilter) !== -1;
+      });
+
+      filtered.forEach(function (v) {
+        grid.appendChild(buildCard(v));
+      });
+    }
+
+
+    /* ---- Filter buttons ---- */
+
+    document.querySelectorAll('.video-filter-bar .filter-tag').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.video-filter-bar .filter-tag').forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        activeFilter = btn.dataset.filter;
+        renderVideos();
+      });
+    });
+
+
+    /* ---- Initial render ---- */
+    renderVideos();
+
+  })();
+  </script>
+
+</body>
+</html>

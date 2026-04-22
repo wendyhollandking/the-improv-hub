@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games Library — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="library.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="../modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="../modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="../modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="../modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="../modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="../modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Hero with search bar -->
+      <section class="hero library-hero" aria-labelledby="library-title">
+        <p class="hero-eyebrow">Browse all games</p>
+        <h1 class="hero-title" id="library-title">Games Library</h1>
+        <p class="hero-subtitle" style="margin-bottom: var(--space-lg);">
+          38 improv games — warm-ups, scenes, characters, comedy, musical, and more.
+          Filter by category, search by name, or let us pick one for you.
+        </p>
+
+        <!-- Search bar -->
+        <div class="search-bar" role="search">
+          <label for="game-search" class="sr-only">Search games</label>
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="game-search"
+            class="search-input"
+            placeholder="Search by name or description…"
+            autocomplete="off"
+          >
+          <button id="search-clear" class="search-clear" aria-label="Clear search">✕</button>
+        </div>
+      </section>
+
+      <!-- Filter + Grid -->
+      <section class="section library-section" aria-labelledby="filter-label">
+
+        <!-- Filter tag buttons -->
+        <div class="filter-tags" role="group" aria-labelledby="filter-label">
+          <span id="filter-label" class="sr-only">Filter games by category</span>
+
+          <button class="filter-tag active" data-filter="all"           aria-pressed="true" >All</button>
+          <button class="filter-tag"        data-filter="warm-ups"      aria-pressed="false">Warm-ups</button>
+          <button class="filter-tag"        data-filter="yes-and"       aria-pressed="false">Yes, And</button>
+          <button class="filter-tag"        data-filter="characters"    aria-pressed="false">Characters</button>
+          <button class="filter-tag"        data-filter="scenes"        aria-pressed="false">Scenes</button>
+          <button class="filter-tag"        data-filter="comedy"        aria-pressed="false">Comedy</button>
+          <button class="filter-tag"        data-filter="musical"       aria-pressed="false">Musical</button>
+          <button class="filter-tag"        data-filter="solo-friendly" aria-pressed="false">Solo-friendly</button>
+          <button class="filter-tag"        data-filter="ai"            aria-pressed="false">✨ Play with AI</button>
+        </div>
+
+        <!-- Results count -->
+        <p class="games-count">
+          Showing <strong id="games-count">— games</strong>
+        </p>
+
+        <!-- Cards grid — populated dynamically by games.js -->
+        <div
+          class="games-library-grid"
+          id="games-grid"
+          aria-live="polite"
+          aria-label="Games list"
+        >
+          <!-- Rendered by games.js on load -->
+        </div>
+
+        <!-- Empty state -->
+        <div class="games-empty" id="games-empty" hidden>
+          <p class="games-empty-icon">🎭</p>
+          <h3>No games found</h3>
+          <p>Try a different category or clear your search.</p>
+          <button
+            class="btn btn-teal"
+            id="show-all-btn"
+          >
+            Show all games
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Random game banner -->
+      <section class="random-game-banner" aria-labelledby="random-heading">
+        <h2 id="random-heading">Feeling spontaneous?</h2>
+        <p>We'll pick a random game from any category.</p>
+        <button class="btn btn-orange btn-lg" id="random-game-btn">
+          🎲 Random game
+        </button>
+      </section>
+
+    </main>
+
+  </div><!-- /site-wrapper -->
+
+  <!-- Load game data first, then navigation, then games.js which depends on both -->
+  <script src="../games/games-data.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/games.js"></script>
+
+  <script>
+    /* "Show all games" button in the empty state */
+    document.getElementById('show-all-btn').addEventListener('click', function () {
+      document.getElementById('game-search').value = '';
+      document.querySelector('[data-filter="all"]').click();
+    });
+  </script>
+
+</body>
+</html>

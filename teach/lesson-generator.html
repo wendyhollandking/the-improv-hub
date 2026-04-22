@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Generator — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../modules/module.css">
+  <link rel="stylesheet" href="lesson-generator.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="../modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="../modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="../modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="../modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="../modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="../modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="../games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Hero -->
+      <header class="lg-hero">
+        <p class="hero-eyebrow" style="color: var(--color-teal);">For instructors</p>
+        <h1>Lesson Generator</h1>
+        <p>
+          Tell me about your class and I'll build a ready-to-run lesson plan — games,
+          timing, teacher notes, and all. You can refine it afterward.
+        </p>
+      </header>
+
+      <!-- API key overlay -->
+      <div class="api-key-overlay" id="api-key-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="key-dialog-heading">
+        <div class="api-key-box">
+          <h3 id="key-dialog-heading">One quick thing</h3>
+          <p>
+            The lesson generator uses the Anthropic API. You'll need an API key —
+            get yours at console.anthropic.com.
+            <br><br>
+            Your key is only saved for this browser session and never sent anywhere
+            except directly to Anthropic.
+          </p>
+          <input
+            type="password"
+            id="api-key-input"
+            class="api-key-input"
+            placeholder="sk-ant-…"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <p class="api-key-error" id="api-key-error" aria-live="polite"></p>
+          <button class="btn btn-teal" id="api-key-submit" style="width: 100%;">
+            Continue →
+          </button>
+        </div>
+      </div>
+
+      <div class="lg-body">
+
+        <!-- ============================================================
+             SETUP FORM
+        ============================================================ -->
+        <div class="lg-form-card" id="lg-form-card">
+          <h2 class="lg-form-title">Tell me about your class</h2>
+
+          <!-- Session length -->
+          <div class="lg-param">
+            <span class="lg-param-label">How long is your class?</span>
+            <div class="lg-pills" role="group" aria-label="Session length">
+              <button class="lg-pill" data-param="duration" data-value="30 minutes">30 min</button>
+              <button class="lg-pill" data-param="duration" data-value="45 minutes">45 min</button>
+              <button class="lg-pill selected" data-param="duration" data-value="50 minutes">50 min</button>
+              <button class="lg-pill" data-param="duration" data-value="60 minutes">60 min</button>
+              <button class="lg-pill" data-param="duration" data-value="75 minutes">75 min</button>
+              <button class="lg-pill" data-param="duration" data-value="90 minutes">90 min</button>
+            </div>
+          </div>
+
+          <!-- Grade level -->
+          <div class="lg-param">
+            <span class="lg-param-label">Grade level</span>
+            <div class="lg-pills" role="group" aria-label="Grade level">
+              <button class="lg-pill" data-param="grade" data-value="middle school students (grades 6–8)">Middle school</button>
+              <button class="lg-pill selected" data-param="grade" data-value="high school students (grades 9–12)">High school</button>
+              <button class="lg-pill" data-param="grade" data-value="a mixed-age group (middle and high school)">Mixed ages</button>
+              <button class="lg-pill" data-param="grade" data-value="adult learners">Adult</button>
+            </div>
+          </div>
+
+          <!-- Class size -->
+          <div class="lg-param">
+            <span class="lg-param-label">Number of students</span>
+            <div class="lg-number-row">
+              <button class="lg-number-btn" id="size-minus" aria-label="Decrease">−</button>
+              <span class="lg-number-display" id="size-display" aria-live="polite">12</span>
+              <button class="lg-number-btn" id="size-plus" aria-label="Increase">+</button>
+            </div>
+          </div>
+
+          <!-- Where in the course -->
+          <div class="lg-param">
+            <span class="lg-param-label">Where are you in the course?</span>
+            <div class="lg-pills" role="group" aria-label="Session position">
+              <button class="lg-pill" data-param="session" data-value="their very first class — they have never done improv before">First class ever</button>
+              <button class="lg-pill selected" data-param="session" data-value="early in the course (sessions 2–3) — they know a little but are still getting comfortable">Early on (2nd–3rd class)</button>
+              <button class="lg-pill" data-param="session" data-value="the middle of the course — they have covered the basics and have some confidence">Middle of the course</button>
+              <button class="lg-pill" data-param="session" data-value="later in the course — they are experienced and ready for more challenge">Later in the course</button>
+            </div>
+          </div>
+
+          <!-- Focus topic -->
+          <div class="lg-param">
+            <span class="lg-param-label">What do you want to focus on?</span>
+            <div class="lg-pills" role="group" aria-label="Focus topic">
+              <button class="lg-pill" data-param="focus" data-value="getting comfortable and being silly — basic improv warm-ups and trust">Getting comfortable</button>
+              <button class="lg-pill selected" data-param="focus" data-value="Yes, And — accepting offers and building on them">Yes, And</button>
+              <button class="lg-pill" data-param="focus" data-value="building characters — physicality, attitude, and commitment">Characters</button>
+              <button class="lg-pill" data-param="focus" data-value="scenes — structure, listening, and building a story together">Scenes</button>
+              <button class="lg-pill" data-param="focus" data-value="comedy patterns — rule of three, escalation, callbacks, and specificity">Comedy patterns</button>
+              <button class="lg-pill" data-param="focus" data-value="sketch comedy — finding the game and building a sketch outline">Sketch comedy</button>
+              <button class="lg-pill" data-param="focus" data-value="a general review and mixed practice — touch on several skills">General review</button>
+            </div>
+          </div>
+
+          <!-- Anything else -->
+          <div class="lg-param">
+            <label class="lg-param-label" for="lg-notes">Anything else I should know? <span style="font-weight: 400; text-transform: none; letter-spacing: 0;">(optional)</span></label>
+            <textarea
+              id="lg-notes"
+              class="lg-notes"
+              placeholder="e.g., Several students are very shy. We have a performance coming up in two weeks. One student uses a wheelchair."
+            ></textarea>
+          </div>
+
+          <button class="btn btn-teal btn-lg lg-generate-btn" id="generate-btn">
+            Generate lesson plan →
+          </button>
+        </div>
+
+
+        <!-- ============================================================
+             OUTPUT CARD — hidden until generation completes
+        ============================================================ -->
+        <div class="lg-output-card" id="lg-output-card" hidden>
+
+          <!-- Output header with action buttons -->
+          <div class="lg-output-header">
+            <span class="lg-output-label">Your lesson plan</span>
+            <div class="lg-output-actions">
+              <button class="btn btn-outline btn-sm" id="copy-btn">Copy</button>
+              <button class="btn btn-outline btn-sm" id="print-btn">Print</button>
+              <button class="btn btn-outline btn-sm" id="start-over-btn">Start over</button>
+            </div>
+          </div>
+
+          <!-- Thinking indicator -->
+          <div class="lg-thinking" id="lg-thinking" hidden>
+            <div class="typing-indicator" aria-label="Generating lesson plan">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+            <span>Building your lesson plan…</span>
+          </div>
+
+          <!-- Formatted lesson plan content -->
+          <div class="lg-output-body" id="lg-output-body">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Follow-up refinement input -->
+          <div class="lg-followup" id="lg-followup" hidden>
+            <textarea
+              class="lg-followup-input"
+              id="lg-followup-input"
+              placeholder="Need changes? Describe what to adjust — e.g., "shorter warm-up", "add a game about listening", "more tips for shy students"…"
+              rows="2"
+            ></textarea>
+            <button class="btn btn-teal btn-sm" id="lg-followup-btn" style="flex-shrink:0;">
+              Update →
+            </button>
+          </div>
+
+          <p class="api-key-error" id="output-error" aria-live="assertive" style="padding: var(--space-sm) var(--space-lg); margin: 0;"></p>
+
+        </div><!-- /lg-output-card -->
+
+      </div><!-- /lg-body -->
+
+    </main>
+  </div><!-- /site-wrapper -->
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/ai-engine.js"></script>
+  <script src="../js/interactions.js"></script>
+
+  <script>
+  /* ============================================================
+     Lesson Generator — controller
+  ============================================================ */
+  (function () {
+
+    /* --- DOM refs --- */
+    var formCard      = document.getElementById('lg-form-card');
+    var outputCard    = document.getElementById('lg-output-card');
+    var outputBody    = document.getElementById('lg-output-body');
+    var thinkingEl    = document.getElementById('lg-thinking');
+    var followupZone  = document.getElementById('lg-followup');
+    var followupInput = document.getElementById('lg-followup-input');
+    var followupBtn   = document.getElementById('lg-followup-btn');
+    var generateBtn   = document.getElementById('generate-btn');
+    var copyBtn       = document.getElementById('copy-btn');
+    var printBtn      = document.getElementById('print-btn');
+    var startOverBtn  = document.getElementById('start-over-btn');
+    var outputError   = document.getElementById('output-error');
+    var keyOverlay    = document.getElementById('api-key-overlay');
+    var keyInput      = document.getElementById('api-key-input');
+    var keyError      = document.getElementById('api-key-error');
+    var keySubmit     = document.getElementById('api-key-submit');
+    var sizeDisplay   = document.getElementById('size-display');
+
+    /* --- State --- */
+    var classSize = 12;
+    var lastPlanText = ''; /* raw text for copy */
+
+
+    /* ============================================================
+       CLASS SIZE STEPPER
+    ============================================================ */
+
+    document.getElementById('size-minus').addEventListener('click', function () {
+      if (classSize > 1) { classSize--; sizeDisplay.textContent = classSize; }
+    });
+    document.getElementById('size-plus').addEventListener('click', function () {
+      if (classSize < 60) { classSize++; sizeDisplay.textContent = classSize; }
+    });
+
+
+    /* ============================================================
+       PILL SELECTORS
+       Each group (data-param) is single-select.
+    ============================================================ */
+
+    document.querySelectorAll('.lg-pill').forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var param = pill.dataset.param;
+        document.querySelectorAll('.lg-pill[data-param="' + param + '"]').forEach(function (p) {
+          p.classList.remove('selected');
+        });
+        pill.classList.add('selected');
+      });
+    });
+
+    function getParam(param) {
+      var sel = document.querySelector('.lg-pill.selected[data-param="' + param + '"]');
+      return sel ? sel.dataset.value : null;
+    }
+
+
+    /* ============================================================
+       BUILD THE PROMPT FROM FORM VALUES
+    ============================================================ */
+
+    function buildPrompt() {
+      var duration = getParam('duration') || '50 minutes';
+      var grade    = getParam('grade')    || 'high school students';
+      var session  = getParam('session')  || 'early in the course';
+      var focus    = getParam('focus')    || 'general improv skills';
+      var notes    = document.getElementById('lg-notes').value.trim();
+
+      var prompt =
+        'I\'m preparing to teach a ' + duration + ' improv class to ' + grade + '. ' +
+        'I have ' + classSize + ' students. ' +
+        'This is ' + session + '. ' +
+        'I want to focus on ' + focus + '.';
+
+      if (notes) {
+        prompt += '\n\nAdditional notes: ' + notes;
+      }
+
+      prompt += '\n\nPlease generate a complete lesson plan.';
+      return prompt;
+    }
+
+
+    /* ============================================================
+       API KEY OVERLAY
+    ============================================================ */
+
+    function showKeyOverlay(callback) {
+      keyOverlay.hidden = false;
+      keyInput.focus();
+      keySubmit._callback = callback;
+    }
+
+    function hideKeyOverlay() {
+      keyOverlay.hidden = true;
+    }
+
+    keyInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') keySubmit.click();
+    });
+
+    keySubmit.addEventListener('click', function () {
+      var key = keyInput.value.trim();
+      if (!key.startsWith('sk-')) {
+        keyError.textContent = 'That doesn\'t look right. API keys start with "sk-".';
+        keyInput.focus();
+        return;
+      }
+      keyError.textContent = '';
+      AI_ENGINE.saveKey(key);
+      hideKeyOverlay();
+      if (typeof keySubmit._callback === 'function') keySubmit._callback();
+    });
+
+
+    /* ============================================================
+       GENERATION
+    ============================================================ */
+
+    function generate(prompt) {
+      /* Show output card, hide form, show thinking */
+      outputCard.hidden  = false;
+      thinkingEl.hidden  = false;
+      outputBody.innerHTML = '';
+      outputError.textContent = '';
+      followupZone.hidden = true;
+      outputCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      AI_ENGINE.startSession(
+        'lesson-generator',
+        function onResponse(text) {
+          thinkingEl.hidden = true;
+          lastPlanText = text;
+          outputBody.innerHTML = window.formatChatText ? window.formatChatText(text) : text;
+          followupZone.hidden = false;
+          followupInput.value = '';
+        },
+        function onError(err) {
+          thinkingEl.hidden = true;
+          if (err.code === 'INVALID_KEY' || err.message === 'NO_KEY') {
+            AI_ENGINE.clearKey();
+            outputError.textContent = 'API key issue — please check your key.';
+            setTimeout(function () {
+              outputCard.hidden = true;
+              formCard.hidden   = false;
+              showKeyOverlay(function () { generate(prompt); });
+            }, 1500);
+          } else if (err.code === 'RATE_LIMIT') {
+            outputError.textContent = 'Too many requests — wait a moment and try again.';
+          } else {
+            outputError.textContent = 'Something went wrong. Try generating again.';
+          }
+        },
+        { maxTokens: 1500 }
+      );
+
+      AI_ENGINE.sendMessage(prompt);
+    }
+
+    generateBtn.addEventListener('click', function () {
+      var prompt = buildPrompt();
+      if (!AI_ENGINE.hasKey()) {
+        showKeyOverlay(function () { generate(prompt); });
+      } else {
+        generate(prompt);
+      }
+    });
+
+
+    /* ============================================================
+       FOLLOW-UP REFINEMENTS
+    ============================================================ */
+
+    function sendFollowup() {
+      var text = followupInput.value.trim();
+      if (!text) return;
+
+      thinkingEl.hidden    = false;
+      followupZone.hidden  = true;
+      outputError.textContent = '';
+
+      AI_ENGINE.sendMessage(text);
+      /* onResponse handler above updates the output body */
+    }
+
+    followupBtn.addEventListener('click', sendFollowup);
+    followupInput.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        sendFollowup();
+      }
+    });
+
+
+    /* ============================================================
+       OUTPUT ACTIONS
+    ============================================================ */
+
+    copyBtn.addEventListener('click', function () {
+      if (!lastPlanText) return;
+      navigator.clipboard.writeText(lastPlanText).then(function () {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 2000);
+      }).catch(function () {
+        /* Fallback for browsers without clipboard API */
+        var ta = document.createElement('textarea');
+        ta.value = lastPlanText;
+        ta.style.position = 'fixed';
+        ta.style.opacity  = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 2000);
+      });
+    });
+
+    printBtn.addEventListener('click', function () {
+      window.print();
+    });
+
+    startOverBtn.addEventListener('click', function () {
+      AI_ENGINE.endSession();
+      outputCard.hidden = true;
+      formCard.hidden   = false;
+      lastPlanText      = '';
+      outputBody.innerHTML = '';
+      formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+  })();
+  </script>
+
+</body>
+</html>

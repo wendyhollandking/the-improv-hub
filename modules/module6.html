@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 6: Sketch Comedy — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="module.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="../games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Module header -->
+      <header class="module-hero" style="--module-color: var(--module-6-color);" aria-labelledby="module-title">
+        <p class="module-eyebrow">Module 6</p>
+        <h1 id="module-title">Sketch Comedy</h1>
+      </header>
+
+      <!-- Section tab bar -->
+      <nav class="module-tabs" aria-label="Module sections">
+        <a href="#basics" class="module-tab">The basics</a>
+        <a href="#watch"  class="module-tab">Watch it</a>
+        <a href="#games"  class="module-tab">How to build a sketch</a>
+        <a href="#play"   class="module-tab">Play with AI</a>
+      </nav>
+
+
+      <!-- ======================================================
+           SECTION 1: THE BASICS
+      ====================================================== -->
+      <section id="basics" class="module-section" aria-labelledby="basics-heading">
+        <h2 class="module-section-heading" id="basics-heading">The basics</h2>
+
+        <!-- From improv to script -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">From improv to script</h3>
+          <div class="module-prose">
+            <p>
+              You've been doing improv — making things up in the moment, saying yes, building
+              scenes together with no plan. Sketch comedy takes the same skills and adds one
+              thing: you write it down first.
+            </p>
+            <p>
+              That might sound like it removes all the fun, but it actually gives you a different
+              kind of freedom. When you know what's coming, you can make every line land harder.
+              You can time things perfectly. You can do a second take on a joke that only half
+              worked. Improv teaches you how to find funny ideas; sketch writing teaches you how
+              to build on them.
+            </p>
+            <p>
+              The best sketch writers are also good improvisers. And a lot of the best improv
+              performers think like sketch writers — always noticing when something could be
+              developed, heightened, and played all the way out.
+            </p>
+          </div>
+        </div>
+
+        <!-- What makes a sketch: the game -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">What makes a sketch: the game</h3>
+          <div class="module-prose">
+            <p>
+              Every good sketch has a <strong>game</strong> — a single repeatable comic idea
+              that the sketch plays with, over and over, in different ways. Not a plot, exactly.
+              More like a rule that makes things funny every time it comes up.
+            </p>
+            <p>
+              In the "Substitute Teacher" sketch you watched in Module 5, the game is: a teacher
+              mispronounces names and refuses to believe the students are saying them right. That's
+              it. The whole sketch is variations on that one idea. In the "More Cowbell" sketch,
+              the game is: one musician keeps adding cowbell to everything, and the producer
+              thinks it makes it better. Same rule, different moments.
+            </p>
+            <p>
+              Finding the game is the most important skill in sketch writing. Ask yourself: what's
+              the one weird thing happening in this scene? Can I do it again? Can I do it bigger?
+              If yes, you probably have a game.
+            </p>
+          </div>
+        </div>
+
+        <!-- The structure of a sketch -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">The structure of a sketch</h3>
+          <div class="module-prose">
+            <p>
+              Most sketches follow the same four-part shape, whether they're two minutes long or
+              ten. Once you see it, you'll notice it everywhere.
+            </p>
+            <ol>
+              <li>
+                <strong>The setup.</strong> Establish the world, the characters, and what's
+                normal — fast. Introduce the "game" as soon as possible so the audience knows
+                what they're watching. A good setup is quick and clear; a sketch that spends
+                too long explaining itself runs out of room to be funny.
+              </li>
+              <li>
+                <strong>The game.</strong> Play the game. The weird thing happens again, in a
+                different way. And again. Each time should feel slightly more extreme than the
+                last. This is the middle of the sketch, and it's where most of the laughs live.
+              </li>
+              <li>
+                <strong>The heighten.</strong> The game escalates. Things get more absurd, the
+                stakes get higher, the characters get more committed to their position. The
+                audience has been on a slow escalator, and now it's going faster.
+              </li>
+              <li>
+                <strong>The button.</strong> The very last moment — usually one final joke that
+                lands as a punctuation mark. The button doesn't resolve everything; it just
+                ends things at the highest possible point. Leave on a laugh, not an explanation.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Finding your sketch idea -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Finding your sketch idea</h3>
+          <div class="module-prose">
+            <p>
+              The best sketch ideas start with a "what if" question. Not "what if something crazy
+              happened" — something more specific. What if the one rule of this situation were
+              slightly different? What if this normal thing were taken completely literally?
+              What if this character believed something that nobody else believes?
+            </p>
+            <p>
+              There are three reliable places to look:
+            </p>
+            <ul>
+              <li>
+                <strong>The what-if.</strong> Start with a rule, flip it, and follow it logically.
+                What if customer service was actually helpful — terrifyingly, relentlessly helpful?
+                What if a museum tour guide were completely wrong about everything? The logic of
+                the idea generates the jokes.
+              </li>
+              <li>
+                <strong>The character.</strong> Some sketches are just about a very specific
+                person who sees the world in a very specific way. Every situation they're in
+                becomes funny because of how they process it. The character is the game.
+              </li>
+              <li>
+                <strong>The normal + the weird.</strong> Take something completely ordinary and
+                put one strange thing in it. A job interview is normal; a job interview where
+                the interviewer keeps falling asleep is a sketch. The ordinary makes the weird
+                funnier; the weird makes the ordinary visible.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Writing vs. performing -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Writing vs. performing</h3>
+          <div class="module-prose">
+            <p>
+              Sketch writing and sketch performing are two different skills, and you can be great
+              at one without being great at the other — though both get better with practice.
+            </p>
+            <p>
+              When you're writing, your job is to find the game and build the structure. When
+              you're performing, your job is to commit completely to the reality of the scene.
+              Over-performing a sketch is just as deadly as under-writing it. The best sketch
+              performers aren't playing "isn't this funny?" — they're playing "this is completely
+              normal and I will defend it with my life." The funnier the premise, the more
+              straight you should play it.
+            </p>
+            <p>
+              In this module, you'll write. There's a place for performing, but building the
+              structure is the skill — and it's one that transfers everywhere.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 2: WATCH IT IN ACTION
+      ====================================================== -->
+      <section id="watch" class="module-section" aria-labelledby="watch-heading">
+        <h2 class="module-section-heading" id="watch-heading">Watch it in action</h2>
+
+        <!-- Video 1: More Cowbell -->
+        <div class="module-prose" style="margin-bottom: var(--space-md);">
+          <p>
+            First, watch the SNL "More Cowbell" sketch. It's one of the most-studied sketches
+            in comedy writing circles because the game is so simple and so well-played. As you
+            watch, notice: what's the game? When does it first appear? How does it escalate?
+            Where is the button?
+          </p>
+        </div>
+        <div class="video-embed-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/cVsQLlk-T0s"
+            title="SNL — More Cowbell"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="video-caption" style="margin-bottom: var(--space-xl);">
+          SNL — "More Cowbell." A masterclass in finding a game and playing it all the way out.
+          Every beat is the same game, just bigger.
+        </p>
+
+        <!-- Video 2: Studio C — Lobster Bisque -->
+        <div class="module-prose" style="margin-bottom: var(--space-md);">
+          <p>
+            Now watch this Studio C sketch about a couple trying to order soup. The game here
+            is that no matter what they ask for, the waiter finds a way back to lobster bisque.
+            Every substitution gets shot down, every alternative circles back to the same
+            answer. Watch how the game stays exactly the same from start to finish — and how
+            the musical ending is just the logical conclusion of a joke that's been building
+            the whole time.
+          </p>
+        </div>
+        <div class="video-embed-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/A2KCGQhVRTE"
+            title="Studio C — Lobster Bisque"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="video-caption">
+          Studio C — "Lobster Bisque." The game is simple: the waiter always ends up back at
+          lobster bisque. The sketch is just finding new ways to play that same beat.
+        </p>
+
+        <!-- Quick check quiz -->
+        <p class="quick-check-label">Quick check</p>
+
+        <div class="quiz">
+
+          <div class="quiz-question" data-correct="b">
+            <p class="quiz-q-number">Question 1</p>
+            <p class="quiz-q-text">What is the "game" of the More Cowbell sketch?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-option="a">
+                <span class="quiz-letter">A</span>
+                A band argues about who deserves more stage time.
+              </button>
+              <button class="quiz-option" data-option="b">
+                <span class="quiz-letter">B</span>
+                One musician keeps adding cowbell, and the producer insists the song needs more of it — no matter what.
+              </button>
+              <button class="quiz-option" data-option="c">
+                <span class="quiz-letter">C</span>
+                A music producer takes over the session and fires everyone.
+              </button>
+              <button class="quiz-option" data-option="d">
+                <span class="quiz-letter">D</span>
+                A recording session keeps going wrong because of technical problems.
+              </button>
+            </div>
+            <p class="quiz-feedback correct" hidden>
+              Right. That one repeatable comic rule — "add more cowbell, always" — is the game. The sketch just keeps finding new ways to play the same rule.
+            </p>
+            <p class="quiz-feedback incorrect" hidden>
+              Not quite. The game is the one repeatable comic rule: more cowbell solves everything, no matter what. The rest of the sketch is just different versions of that same moment.
+            </p>
+          </div>
+
+          <div class="quiz-question" data-correct="b">
+            <p class="quiz-q-number">Question 2</p>
+            <p class="quiz-q-text">In both More Cowbell and the Lobster Bisque sketch, how does the sketch use the game through the middle section?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-option="a">
+                <span class="quiz-letter">A</span>
+                A brand new joke is introduced every thirty seconds so the sketch stays fresh.
+              </button>
+              <button class="quiz-option" data-option="b">
+                <span class="quiz-letter">B</span>
+                The same game comes back repeatedly, each time a little bigger or more extreme than before.
+              </button>
+              <button class="quiz-option" data-option="c">
+                <span class="quiz-letter">C</span>
+                The characters try to solve the problem and eventually succeed.
+              </button>
+              <button class="quiz-option" data-option="d">
+                <span class="quiz-letter">D</span>
+                The sketch slows down in the middle so the ending is a bigger surprise.
+              </button>
+            </div>
+            <p class="quiz-feedback correct" hidden>
+              Exactly. That's escalation in action — same game, higher stakes each time. The repetition isn't boring; it's what makes it satisfying.
+            </p>
+            <p class="quiz-feedback incorrect" hidden>
+              Not quite. The middle of a sketch is built on escalation — playing the same game repeatedly, each time with a little more intensity or absurdity. Variety is good, but it's the repetition of the game that creates the payoff.
+            </p>
+          </div>
+
+        </div><!-- /quiz -->
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 3: HOW TO BUILD A SKETCH
+           Not a traditional game — a 5-step building guide.
+      ====================================================== -->
+      <section id="games" class="module-section" aria-labelledby="games-heading">
+        <h2 class="module-section-heading" id="games-heading">How to build a sketch</h2>
+
+        <div class="module-prose" style="margin-bottom: var(--space-lg);">
+          <p>
+            This isn't a game you play in a circle — it's a process you follow when you're
+            writing. Each step builds on the last. Work through them in order, and by the time
+            you reach step 5, you'll have the outline of a real sketch.
+          </p>
+        </div>
+
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Step 1: Start with a what-if</h3>
+          <div class="module-prose">
+            <p>
+              Write down a question that starts with "what if." It should describe a situation
+              where one specific thing is different from normal. Not "what if everything was
+              weird" — that's too vague. "What if a GPS gave terrible life advice?" That's a
+              game.
+            </p>
+            <p>
+              Give yourself three minutes. Write as many what-ifs as you can without judging any
+              of them. Pick the one that makes you want to keep going.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Step 2: Identify the game</h3>
+          <div class="module-prose">
+            <p>
+              Look at your what-if and find the single repeatable rule inside it. The game should
+              be simple enough to say in one sentence. "Every time X happens, Y happens" is the
+              pattern you're looking for.
+            </p>
+            <p>
+              Ask yourself: can I do this at least three times in a row? Does each repetition
+              leave room to escalate? If the answer to both is yes, you have a game. If the idea
+              only works once, it's a joke — not a sketch.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Step 3: Write the setup</h3>
+          <div class="module-prose">
+            <p>
+              Establish who's in the scene, where they are, and what's normal — as fast as
+              possible. The audience needs just enough to understand what the game is when it
+              first appears. A good setup usually takes about a minute of screen time, sometimes
+              less.
+            </p>
+            <p>
+              Introduce the game clearly the first time. Don't hint at it or tease it — show it.
+              The first time the game happens, the audience should think "wait, is that a thing?"
+              The second time, they should think "oh, it's definitely a thing." The third time,
+              they're already laughing before it lands because they know it's coming.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Step 4: Heighten three times</h3>
+          <div class="module-prose">
+            <p>
+              Play the game three more times. Each time, make it bigger: higher stakes, more
+              extreme behavior, a more ridiculous situation. By the third heighten, things should
+              feel a little out of control in the best possible way.
+            </p>
+            <p>
+              The rule of three from Module 5 applies here: setup once, play it twice, then
+              deliver the third version as the escalation peak. The third heighten is where the
+              biggest laugh usually lives.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Step 5: Find the button</h3>
+          <div class="module-prose">
+            <p>
+              The button is the very last moment of the sketch — a final joke, image, or line
+              that ends things at the highest possible point. It doesn't explain or resolve
+              anything. It just punctuates.
+            </p>
+            <p>
+              Good buttons often call back to something from earlier in the sketch. They take
+              the final escalation to its logical (or illogical) extreme. Or they introduce one
+              last unexpected twist that recontextualizes everything. What they never do: explain
+              the joke, sum up what happened, or end on a soft note. Leave on a laugh, cut to
+              black.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 4: PLAY WITH AI
+           Sketch Builder.
+           Student picks a "what if" starting point → auto-sent →
+           AI guides them through setup / game / heighten / button.
+      ====================================================== -->
+      <section id="play" class="module-section" aria-labelledby="play-heading">
+        <h2 class="module-section-heading" id="play-heading">Play: Sketch Builder with AI</h2>
+
+        <div class="ai-play-zone">
+
+          <!-- API key overlay -->
+          <div class="api-key-overlay" id="api-key-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="key-dialog-heading">
+            <div class="api-key-box">
+              <h3 id="key-dialog-heading">One quick thing</h3>
+              <p>
+                Playing with AI uses the Anthropic API. You'll need an API key — your teacher
+                may have one for the class, or you can get your own at console.anthropic.com.
+                <br><br>
+                Your key is only saved for this browser session and never sent anywhere except
+                directly to Anthropic.
+              </p>
+              <input
+                type="password"
+                id="api-key-input"
+                class="api-key-input"
+                placeholder="sk-ant-…"
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <p class="api-key-error" id="api-key-error" aria-live="polite"></p>
+              <button class="btn btn-teal" id="api-key-submit" style="width: 100%;">
+                Let's play →
+              </button>
+            </div>
+          </div>
+
+          <!-- ---- SETUP PANEL ---- -->
+          <div class="ai-panel" id="ai-setup">
+
+            <p class="ai-panel-intro">
+              Pick a "what if" starting point, and the AI will help you build it into a real
+              sketch outline — setup, game, three heightens, and a button. You're doing the
+              writing; the AI is your co-writer and coach.
+            </p>
+
+            <div class="ai-how-it-works">
+              <h3>How it works</h3>
+              <ul>
+                <li>Pick a starting "what if" below, or write your own</li>
+                <li>The AI will help you find the game inside it</li>
+                <li>Then you'll build through setup, heighten, and button together</li>
+                <li>By the end, you'll have a full sketch outline you actually wrote</li>
+              </ul>
+            </div>
+
+            <!-- What-if picker -->
+            <p class="prompt-picker-label">Pick a starting point</p>
+            <div class="prompt-list" id="prompt-list" role="radiogroup" aria-label="Sketch starting points">
+
+              <button class="prompt-option" data-prompt="What if a GPS gave advice about your life choices, not just directions?" role="radio" aria-checked="false">
+                What if a GPS gave advice about your life choices, not just directions?
+              </button>
+              <button class="prompt-option" data-prompt="What if customer service was actually too helpful — aggressively, terrifyingly helpful?" role="radio" aria-checked="false">
+                What if customer service was actually too helpful — aggressively, terrifyingly helpful?
+              </button>
+              <button class="prompt-option" data-prompt="What if a fortune cookie kept being weirdly specific and accurate about your day?" role="radio" aria-checked="false">
+                What if a fortune cookie kept being weirdly specific and accurate about your day?
+              </button>
+              <button class="prompt-option" data-prompt="What if a school announcement system kept interrupting class to announce increasingly minor things?" role="radio" aria-checked="false">
+                What if a school announcement system kept interrupting class to announce increasingly minor things?
+              </button>
+              <button class="prompt-option" data-prompt="What if a museum tour guide was completely wrong about everything but fully confident?" role="radio" aria-checked="false">
+                What if a museum tour guide was completely wrong about everything but fully confident?
+              </button>
+              <button class="prompt-option" data-prompt="What if a cooking show host treated every dish like a life-or-death competition?" role="radio" aria-checked="false">
+                What if a cooking show host treated every dish like a life-or-death competition?
+              </button>
+              <button class="prompt-option" data-prompt="What if a very polite person kept accidentally causing chaos everywhere they went?" role="radio" aria-checked="false">
+                What if a very polite person kept accidentally causing chaos everywhere they went?
+              </button>
+              <button class="prompt-option" data-prompt="What if a dog sitter reported back to the owners with way too much detail about the dog's emotional state?" role="radio" aria-checked="false">
+                What if a dog sitter reported back to the owners with way too much detail about the dog's emotional state?
+              </button>
+
+            </div>
+
+            <!-- Custom what-if -->
+            <div class="prompt-custom">
+              <input
+                type="text"
+                id="custom-prompt-input"
+                class="prompt-custom-input"
+                placeholder="Or write your own what-if…"
+                maxlength="200"
+              >
+            </div>
+
+            <!-- Tips -->
+            <div class="ai-how-it-works" style="margin-bottom: var(--space-xl);">
+              <h3>Tips for a strong what-if</h3>
+              <ul>
+                <li>Make sure there's a repeatable game inside it — something that can happen more than once</li>
+                <li>Specific is better than vague: "a confused substitute teacher" is better than "a weird teacher"</li>
+                <li>If you can imagine three different funny versions of the same moment, you've got a sketch</li>
+              </ul>
+            </div>
+
+            <!-- Start button -->
+            <button class="btn btn-orange btn-lg" id="start-scene-btn" style="width: 100%;">
+              Build a sketch
+            </button>
+
+          </div><!-- /ai-setup -->
+
+
+          <!-- ---- CHAT PANEL ---- -->
+          <div class="ai-panel" id="ai-chat" hidden style="padding: 0;">
+
+            <!-- Chat header bar -->
+            <div class="chat-header">
+              <span class="chat-game-title">📝 Sketch Builder</span>
+              <span class="chat-round-counter" id="round-display">Step 1</span>
+            </div>
+
+            <!-- Message list -->
+            <div class="chat-messages" id="chat-messages" aria-live="polite" aria-label="Sketch building conversation">
+              <!-- Messages injected by JavaScript -->
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-area">
+              <div class="chat-input-row">
+                <textarea
+                  class="chat-input"
+                  id="chat-input"
+                  placeholder="Write your answer or idea here…"
+                  rows="3"
+                  aria-label="Your sketch ideas"
+                ></textarea>
+                <button class="chat-send-btn" id="chat-send-btn" aria-label="Send">
+                  Send →
+                </button>
+              </div>
+              <div class="chat-actions-row">
+                <span style="font-size: 0.72rem; color: rgba(255,255,255,0.3);">Ctrl+Enter to send</span>
+                <button class="end-scene-btn" id="end-scene-btn">Finish sketch</button>
+              </div>
+              <p class="chat-error" id="chat-error" aria-live="assertive"></p>
+            </div>
+
+          </div><!-- /ai-chat -->
+
+
+          <!-- ---- REFLECTION PANEL ---- -->
+          <div class="ai-panel" id="ai-reflect" hidden>
+
+            <h2 class="reflection-heading">You just wrote a sketch.</h2>
+
+            <p style="color: rgba(255,255,255,0.65); font-size: 0.875rem; margin-bottom: var(--space-lg);">
+              Real comedians spend years learning to do what you just did. A few things to
+              think about before you go:
+            </p>
+
+            <ul class="reflection-questions">
+              <li>
+                <span class="reflection-q-marker">→</span>
+                Did you find a clear game — a rule that could repeat and escalate? Or did the
+                sketch stay a little too scattered?
+              </li>
+              <li>
+                <span class="reflection-q-marker">→</span>
+                Where did the escalation feel natural, and where did it feel forced? The moments
+                that felt forced are worth looking at — they usually mean the game needs to
+                be tightened.
+              </li>
+              <li>
+                <span class="reflection-q-marker">→</span>
+                Did you find a button, or did the sketch just sort of stop? A real button is
+                harder to write than it looks — but when it lands, you feel it.
+              </li>
+              <li>
+                <span class="reflection-q-marker">→</span>
+                What would you change if you ran this sketch with a group and actually performed it?
+              </li>
+            </ul>
+
+            <p class="reflection-coda">
+              Every sketch you write makes the next one easier. The structure is the same every
+              time; finding a sharp game is what gets better with practice. You know how to build
+              a sketch now. That's not nothing.
+            </p>
+
+            <div class="reflection-actions">
+              <button class="btn btn-yellow" id="play-again-btn">Build another sketch</button>
+              <a href="../games/library.html" class="btn btn-outline">Games library</a>
+              <a href="../index.html" class="btn btn-outline">Back to home</a>
+            </div>
+
+          </div><!-- /ai-reflect -->
+
+        </div><!-- /ai-play-zone -->
+      </section>
+
+    </main><!-- /main-content -->
+  </div><!-- /site-wrapper -->
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/ai-engine.js"></script>
+  <script src="../js/interactions.js"></script>
+
+  <script>
+  /* ============================================================
+     Module 6 — AI Play controller
+     Sketch Builder.
+
+     The student picks a "what if" starting point in the setup
+     panel. When they click "Build a sketch", that premise is
+     auto-sent as the first message. The AI then guides them
+     step-by-step through finding the game, writing the setup,
+     heightening, and landing the button.
+  ============================================================ */
+  (function () {
+
+    /* --- DOM refs --- */
+    var setupPanel    = document.getElementById('ai-setup');
+    var chatPanel     = document.getElementById('ai-chat');
+    var reflectPanel  = document.getElementById('ai-reflect');
+    var keyOverlay    = document.getElementById('api-key-overlay');
+
+    var promptList    = document.getElementById('prompt-list');
+    var customInput   = document.getElementById('custom-prompt-input');
+    var startBtn      = document.getElementById('start-scene-btn');
+
+    var chatMessages  = document.getElementById('chat-messages');
+    var chatInput     = document.getElementById('chat-input');
+    var sendBtn       = document.getElementById('chat-send-btn');
+    var endSceneBtn   = document.getElementById('end-scene-btn');
+    var roundDisplay  = document.getElementById('round-display');
+    var chatError     = document.getElementById('chat-error');
+
+    var keyInput      = document.getElementById('api-key-input');
+    var keyError      = document.getElementById('api-key-error');
+    var keySubmit     = document.getElementById('api-key-submit');
+
+    var playAgainBtn  = document.getElementById('play-again-btn');
+
+    /* --- State --- */
+    var selectedPrompt = '';
+    var isWaiting      = false;
+
+    var MAX_ROUNDS           = 10;  /* enough turns to get through all four steps */
+    var PROMPT_BTN_THRESHOLD = 3;
+
+
+    /* ============================================================
+       PROMPT SELECTION
+    ============================================================ */
+
+    promptList.querySelectorAll('.prompt-option').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        promptList.querySelectorAll('.prompt-option').forEach(function (b) {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+        selectedPrompt = btn.dataset.prompt;
+        customInput.value = '';
+      });
+    });
+
+    customInput.addEventListener('input', function () {
+      if (customInput.value.trim()) {
+        promptList.querySelectorAll('.prompt-option').forEach(function (b) {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        selectedPrompt = '';
+      }
+    });
+
+
+    /* ============================================================
+       START BUTTON
+    ============================================================ */
+
+    startBtn.addEventListener('click', function () {
+      var premise = customInput.value.trim() || selectedPrompt;
+      if (!premise) {
+        promptList.style.outline = '2px solid var(--color-orange)';
+        setTimeout(function () { promptList.style.outline = ''; }, 1200);
+        customInput.focus();
+        return;
+      }
+      selectedPrompt = premise;
+
+      if (!AI_ENGINE.hasKey()) {
+        showKeyOverlay();
+      } else {
+        beginGame();
+      }
+    });
+
+
+    /* ============================================================
+       API KEY OVERLAY
+    ============================================================ */
+
+    function showKeyOverlay() {
+      keyOverlay.hidden = false;
+      keyInput.focus();
+    }
+
+    function hideKeyOverlay() {
+      keyOverlay.hidden = true;
+    }
+
+    keyInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') keySubmit.click();
+    });
+
+    keySubmit.addEventListener('click', function () {
+      var key = keyInput.value.trim();
+      if (!key.startsWith('sk-')) {
+        keyError.textContent = 'That doesn\'t look right. Anthropic API keys start with "sk-".';
+        keyInput.focus();
+        return;
+      }
+      keyError.textContent = '';
+      AI_ENGINE.saveKey(key);
+      hideKeyOverlay();
+      beginGame();
+    });
+
+
+    /* ============================================================
+       GAME FLOW
+       Auto-send the student's selected what-if as the first message.
+    ============================================================ */
+
+    function beginGame() {
+      setupPanel.hidden = true;
+      chatPanel.hidden  = false;
+      chatMessages.innerHTML = '';
+      chatError.textContent  = '';
+      roundDisplay.textContent = 'Step 1';
+      endSceneBtn.classList.remove('prominent');
+
+      AI_ENGINE.startSession('sketch-builder', onAIMessage, onAIError);
+
+      /* Auto-send the selected premise as the opening message */
+      addMessage('user', selectedPrompt);
+      setWaiting(true);
+      addTypingIndicator();
+      AI_ENGINE.sendMessage(selectedPrompt);
+    }
+
+    function onAIMessage(text, roundCount) {
+      removeTypingIndicator();
+      setWaiting(false);
+      addMessage('ai', text);
+      updateStepDisplay(roundCount);
+      chatInput.focus();
+
+      if (roundCount >= MAX_ROUNDS) {
+        setTimeout(endScene, 800);
+      }
+    }
+
+    function onAIError(err) {
+      removeTypingIndicator();
+      setWaiting(false);
+
+      if (err.code === 'INVALID_KEY' || err.message === 'NO_KEY') {
+        AI_ENGINE.clearKey();
+        chatError.textContent = 'API key issue. Please check your key and try again.';
+        setTimeout(function () {
+          chatError.textContent = '';
+          chatPanel.hidden  = true;
+          setupPanel.hidden = false;
+          showKeyOverlay();
+        }, 2000);
+      } else if (err.code === 'RATE_LIMIT') {
+        chatError.textContent = 'Too many requests — wait a moment and try again.';
+        setTimeout(function () { chatError.textContent = ''; }, 4000);
+      } else {
+        chatError.textContent = 'Something went wrong. Try sending your line again.';
+        setTimeout(function () { chatError.textContent = ''; }, 4000);
+      }
+    }
+
+
+    /* ============================================================
+       SENDING MESSAGES
+    ============================================================ */
+
+    function sendLine() {
+      var text = chatInput.value.trim();
+      if (!text || isWaiting) return;
+
+      chatInput.value = '';
+      addMessage('user', text);
+      setWaiting(true);
+      addTypingIndicator();
+
+      AI_ENGINE.sendMessage(text);
+    }
+
+    sendBtn.addEventListener('click', sendLine);
+
+    chatInput.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        sendLine();
+      }
+    });
+
+    endSceneBtn.addEventListener('click', endScene);
+
+
+    /* ============================================================
+       END + REFLECTION
+    ============================================================ */
+
+    function endScene() {
+      AI_ENGINE.endSession();
+      chatPanel.hidden    = true;
+      reflectPanel.hidden = false;
+    }
+
+    playAgainBtn.addEventListener('click', function () {
+      reflectPanel.hidden = true;
+      chatPanel.hidden    = true;
+      setupPanel.hidden   = false;
+      promptList.querySelectorAll('.prompt-option').forEach(function (b) {
+        b.classList.remove('selected');
+        b.setAttribute('aria-checked', 'false');
+      });
+      customInput.value = '';
+      selectedPrompt    = '';
+    });
+
+
+    /* ============================================================
+       CHAT UI HELPERS
+    ============================================================ */
+
+    function addMessage(role, text) {
+      var row = document.createElement('div');
+      row.className = 'chat-message chat-message-' + role;
+
+      if (role === 'ai') {
+        var avatar = document.createElement('div');
+        avatar.className = 'chat-avatar';
+        avatar.setAttribute('aria-hidden', 'true');
+        avatar.textContent = '📝';
+        row.appendChild(avatar);
+      }
+
+      var bubble = document.createElement('div');
+      bubble.className = 'chat-bubble';
+      /* Use markdown renderer for AI messages so bold/bullets display correctly */
+      if (role === 'ai' && window.formatChatText) {
+        bubble.innerHTML = window.formatChatText(text);
+      } else {
+        bubble.textContent = text;
+      }
+      row.appendChild(bubble);
+
+      chatMessages.appendChild(row);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addTypingIndicator() {
+      var row = document.createElement('div');
+      row.className = 'chat-message chat-message-ai';
+      row.id = 'typing-row';
+
+      var avatar = document.createElement('div');
+      avatar.className = 'chat-avatar';
+      avatar.setAttribute('aria-hidden', 'true');
+      avatar.textContent = '📝';
+
+      var indicator = document.createElement('div');
+      indicator.className = 'typing-indicator';
+      indicator.setAttribute('aria-label', 'AI is thinking');
+      indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+      row.appendChild(avatar);
+      row.appendChild(indicator);
+      chatMessages.appendChild(row);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      var row = document.getElementById('typing-row');
+      if (row) row.remove();
+    }
+
+    function setWaiting(waiting) {
+      isWaiting = waiting;
+      chatInput.disabled = waiting;
+      sendBtn.disabled   = waiting;
+    }
+
+    function updateStepDisplay(roundCount) {
+      /* Map rounds loosely to sketch-building steps */
+      var step = Math.min(roundCount, 5);
+      var labels = ['Step 1', 'Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'];
+      roundDisplay.textContent = labels[step] || 'Step 5';
+      if (roundCount >= PROMPT_BTN_THRESHOLD) {
+        endSceneBtn.classList.add('prominent');
+      }
+    }
+
+
+    /* ============================================================
+       MODULE TAB HIGHLIGHTING
+    ============================================================ */
+
+    var sections = document.querySelectorAll('.module-section');
+    var tabs     = document.querySelectorAll('.module-tab');
+
+    function updateActiveTabs() {
+      var scrollPos = window.scrollY + 80;
+      sections.forEach(function (sec) {
+        if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          var match = document.querySelector('.module-tab[href="#' + sec.id + '"]');
+          if (match) match.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveTabs, { passive: true });
+    updateActiveTabs();
+
+  })();
+  </script>
+
+</body>
+</html>

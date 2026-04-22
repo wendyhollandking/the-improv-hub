@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play with AI — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../modules/module.css">
+  <link rel="stylesheet" href="ai-play.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="../modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="../modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="../modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="../modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="../modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="../modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="../games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Hero -->
+      <header class="module-hero" style="--module-color: var(--color-teal);" aria-labelledby="page-title">
+        <p class="module-eyebrow">Your scene partner is ready</p>
+        <h1 id="page-title">Play with AI</h1>
+        <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: var(--space-sm) 0 0;">
+          Six games you can play solo with Claude as your improv partner.
+        </p>
+      </header>
+
+      <!-- AI games grid — rendered by JS from GAMES_DATA -->
+      <div class="ai-games-grid" id="ai-games-grid" aria-label="AI-playable games">
+        <!-- Populated by inline script below -->
+      </div>
+
+    </main>
+  </div><!-- /site-wrapper -->
+
+
+  <!-- ============================================================
+       RANDOM GAME PICKER MODAL
+  ============================================================ -->
+  <div class="picker-overlay" id="picker-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="picker-heading">
+    <div class="picker-modal">
+
+      <!-- ---- Spinning state ---- -->
+      <div id="picker-spinning">
+        <p class="picker-label" id="picker-heading">Finding your game…</p>
+        <div class="picker-slot" aria-live="polite" aria-label="Game selector">
+          <span class="picker-slot-name" id="picker-slot-name">Loading…</span>
+        </div>
+      </div>
+
+      <!-- ---- Result state ---- -->
+      <div id="picker-result" hidden>
+        <p class="picker-label">You got:</p>
+        <div class="picker-result-card">
+          <h2 class="picker-result-title" id="result-title"></h2>
+          <p class="picker-result-desc" id="result-desc"></p>
+          <!-- Rules, variations, and prompts — populated by showResult() -->
+          <div class="picker-result-details" id="picker-result-details"></div>
+        </div>
+        <div class="picker-actions">
+          <button id="reroll-btn" class="btn btn-outline">🎲 Try another</button>
+          <button id="picker-close-btn" class="btn" style="background: transparent; color: rgba(255,255,255,0.4); font-size: 0.8rem; padding: var(--space-xs);">
+            Close
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="../games/games-data.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+  /* ============================================================
+     Play with AI — page controller
+     Renders AI-playable game cards and powers the random picker.
+  ============================================================ */
+  (function () {
+
+    /* Module color variables for card accents */
+    var MODULE_COLORS = {
+      1: 'var(--module-1-color)',
+      2: 'var(--module-2-color)',
+      3: 'var(--module-3-color)',
+      4: 'var(--module-4-color)',
+      5: 'var(--module-5-color)',
+      6: 'var(--module-6-color)',
+    };
+
+    /* Category display labels */
+    var CAT_LABELS = {
+      'warm-ups':     'Warm-up',
+      'yes-and':      'Yes, And',
+      'characters':   'Characters',
+      'scenes':       'Scenes',
+      'comedy':       'Comedy',
+      'musical':      'Musical',
+      'solo-friendly':'Solo-friendly'
+    };
+
+    /* Link from this page (play/) to the module's play section */
+    function modulePlayLink(game) {
+      return '../modules/module' + game.module + '.html#play';
+    }
+
+
+    /* ============================================================
+       RENDER AI GAMES GRID
+    ============================================================ */
+
+    function renderGrid() {
+      var grid = document.getElementById('ai-games-grid');
+      if (!grid || typeof GAMES_DATA === 'undefined') return;
+
+      var aiGames = GAMES_DATA.filter(function (g) { return g.aiPlayable; })
+                              .sort(function (a, b) { return (a.module || 99) - (b.module || 99); });
+
+      aiGames.forEach(function (game) {
+        var color = game.module ? MODULE_COLORS[game.module] : 'var(--color-teal)';
+
+        /* Category tags */
+        var tagsHtml = game.categories.map(function (cat) {
+          var label = CAT_LABELS[cat] || cat;
+          return '<span class="tag tag-' + cat + '">' + label + '</span>';
+        }).join('');
+
+        var card = document.createElement('article');
+        card.className = 'card ai-game-card';
+        card.style.setProperty('--card-color', color);
+
+        card.innerHTML =
+          '<div class="ai-game-card-body">' +
+            '<p class="ai-game-card-module">' +
+              (game.module ? 'Module ' + game.module : '') +
+            '</p>' +
+            '<h2 class="ai-game-card-title">' + game.title + '</h2>' +
+            '<p class="ai-game-card-desc">' + game.description + '</p>' +
+            '<div class="ai-game-card-tags">' + tagsHtml + '</div>' +
+          '</div>' +
+          '<div class="ai-game-card-footer">' +
+            '<a href="' + modulePlayLink(game) + '" class="btn btn-teal btn-sm" style="width:100%; justify-content:center;">Play →</a>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+    }
+
+
+    /* ============================================================
+       RANDOM PICKER
+    ============================================================ */
+
+    var overlay     = document.getElementById('picker-overlay');
+    var spinningEl  = document.getElementById('picker-spinning');
+    var resultEl    = document.getElementById('picker-result');
+    var slotNameEl  = document.getElementById('picker-slot-name');
+    var resultTitle = document.getElementById('result-title');
+    var resultDesc  = document.getElementById('result-desc');
+    var rerollBtn   = document.getElementById('reroll-btn');
+    var closeBtn    = document.getElementById('picker-close-btn');
+    /* random-game-btn has been removed from this page;
+       the random picker is triggered via ?random=1 in the URL only */
+    var randomBtn   = document.getElementById('random-game-btn');
+
+    /* Animation: delays between each step (ms), fast → slow */
+    var STEP_DELAYS = [
+      65, 65, 65, 65, 65, 65, 65, 65, 65, 65, /* fast: 10 steps */
+      100, 150, 220, 320, 460, 650, 900         /* slowing: 7 steps */
+    ];
+
+    var pickedGame = null;
+    var animTimer  = null;
+
+    /* All games for the random picker; AI-only filter stays in renderGrid() */
+    function getAllGames() {
+      if (typeof GAMES_DATA === 'undefined') return [];
+      return GAMES_DATA;
+    }
+
+    function openPicker() {
+      overlay.hidden = false;
+      spinningEl.hidden = false;
+      resultEl.hidden   = true;
+      document.body.style.overflow = 'hidden';
+      runPicker();
+    }
+
+    function closePicker() {
+      if (animTimer) { clearTimeout(animTimer); animTimer = null; }
+      overlay.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function runPicker() {
+      var allGames = getAllGames();
+      if (!allGames.length) return;
+
+      /* Pick the winning game up front */
+      pickedGame = allGames[Math.floor(Math.random() * allGames.length)];
+
+      /* Build a sequence: random games ending on pickedGame */
+      var sequence = [];
+      for (var i = 0; i < STEP_DELAYS.length; i++) {
+        sequence.push(allGames[Math.floor(Math.random() * allGames.length)]);
+      }
+      /* Final step always lands on the chosen game */
+      sequence.push(pickedGame);
+
+      var step = 0;
+
+      function showStep() {
+        var game = sequence[step];
+        var duration = STEP_DELAYS[step] || 100;
+
+        /* Animate the name flying in */
+        slotNameEl.classList.remove('is-animating');
+        slotNameEl.style.setProperty('--slot-duration', (Math.min(duration * 0.6, 200)) + 'ms');
+        /* Force reflow to restart animation */
+        void slotNameEl.offsetWidth;
+        slotNameEl.textContent = game.title;
+        slotNameEl.classList.add('is-animating');
+
+        step++;
+
+        if (step < sequence.length) {
+          animTimer = setTimeout(showStep, duration);
+        } else {
+          /* Animation complete — show result after a brief pause */
+          animTimer = setTimeout(showResult, 500);
+        }
+      }
+
+      showStep();
+    }
+
+    function showResult() {
+      var allGames = getAllGames();
+      var game = pickedGame || allGames[0];
+
+      spinningEl.hidden = true;
+      resultEl.hidden   = false;
+
+      resultTitle.textContent  = game.title;
+      resultDesc.textContent   = game.description;
+
+      /* Build rules / variations / prompts HTML */
+      var detailsEl = document.getElementById('picker-result-details');
+      var html = '';
+
+      if (game.rules && game.rules.length) {
+        html += '<div class="picker-detail-section"><h4>How to play</h4><ol class="picker-rules">';
+        game.rules.forEach(function (r) { html += '<li>' + r + '</li>'; });
+        html += '</ol></div>';
+      }
+
+      if (game.example) {
+        html += '<div class="picker-detail-section picker-example"><h4>Example</h4><p>' +
+          game.example.replace(/\n/g, '<br>') + '</p></div>';
+      }
+
+      if (game.variations && game.variations.length) {
+        html += '<div class="picker-detail-section"><h4>Variations</h4><ul class="picker-variations">';
+        game.variations.forEach(function (v) { html += '<li>' + v + '</li>'; });
+        html += '</ul></div>';
+      }
+
+      if (game.prompts && game.prompts.length) {
+        html += '<div class="picker-detail-section"><h4>Prompts &amp; suggestions</h4><ul class="picker-prompts">';
+        game.prompts.forEach(function (p) { html += '<li>' + p + '</li>'; });
+        html += '</ul></div>';
+      }
+
+      detailsEl.innerHTML = html;
+
+    }
+
+    rerollBtn.addEventListener('click', function () {
+      spinningEl.hidden = false;
+      resultEl.hidden   = true;
+      runPicker();
+    });
+
+    closeBtn.addEventListener('click', closePicker);
+
+    if (randomBtn) { randomBtn.addEventListener('click', openPicker); }
+
+    /* Close on overlay background click */
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closePicker();
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !overlay.hidden) closePicker();
+    });
+
+
+    /* ============================================================
+       AUTO-START PICKER IF ?random=1 IN URL
+    ============================================================ */
+
+    document.addEventListener('DOMContentLoaded', function () {
+      renderGrid();
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('random') === '1') {
+        /* Small delay so the page renders visibly before the overlay opens */
+        setTimeout(openPicker, 300);
+      }
+    });
+
+  })();
+  </script>
+
+</body>
+</html>

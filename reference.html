@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Reference — The Improv Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modules/module.css">
+  <!-- Reference-specific styles for the cheat sheet layout -->
+  <style>
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-lg);
+      padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+    }
+
+    /* Full-width cards span both columns on wider screens */
+    .ref-card-full {
+      grid-column: 1 / -1;
+    }
+
+    .ref-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-lg);
+    }
+
+    .ref-card-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin: 0 0 var(--space-md);
+    }
+
+    .ref-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-dark-text);
+      margin: 0 0 var(--space-sm);
+    }
+
+    .ref-card ul,
+    .ref-card ol {
+      margin: 0;
+      padding-left: var(--space-md);
+      color: var(--color-body-text);
+      font-size: 0.875rem;
+      line-height: 1.65;
+    }
+
+    .ref-card li {
+      margin-bottom: var(--space-xs);
+    }
+
+    .ref-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    .ref-card p {
+      color: var(--color-body-text);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin: 0 0 var(--space-sm);
+    }
+
+    .ref-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* The five rules get colored numbers */
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .rules-list li {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--color-body-text);
+    }
+
+    .rules-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .rule-num {
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    /* Don'ts list — red accent */
+    .dont-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .dont-list li {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--color-body-text);
+    }
+
+    .dont-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .dont-marker {
+      color: #e05050;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Sketch steps — numbered with teal accent */
+    .sketch-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: sketch-step;
+    }
+
+    .sketch-steps li {
+      counter-increment: sketch-step;
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--color-body-text);
+    }
+
+    .sketch-steps li:last-child {
+      margin-bottom: 0;
+    }
+
+    .sketch-steps li::before {
+      content: counter(sketch-step);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--color-teal);
+      background: rgba(0, 188, 188, 0.12);
+      border-radius: 50%;
+      width: 1.4em;
+      height: 1.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* "Before you go on" card — special treatment */
+    .ref-card-closing {
+      border-color: var(--color-teal);
+      background: rgba(0, 188, 188, 0.05);
+      text-align: center;
+    }
+
+    .ref-card-closing ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm) var(--space-lg);
+    }
+
+    .ref-card-closing ul li {
+      font-size: 0.875rem;
+      color: var(--color-dark-text);
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .ref-grid {
+        grid-template-columns: 1fr;
+        padding: var(--space-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+    <main class="main-content" id="main-content">
+
+      <!-- Page header -->
+      <header class="module-hero" style="--module-color: var(--color-teal);" aria-labelledby="ref-title">
+        <p class="module-eyebrow">At a glance</p>
+        <h1 id="ref-title">Improv Cheat Sheet</h1>
+        <p style="color: rgba(255,255,255,0.65); margin: var(--space-sm) 0 0; font-size: 0.9rem;">
+          The rules, patterns, and concepts from all six modules — all in one place.
+        </p>
+      </header>
+
+      <!-- Cheat sheet grid -->
+      <div class="ref-grid">
+
+        <!-- The 5 Rules -->
+        <div class="ref-card ref-card-full">
+          <p class="ref-card-heading">The fundamentals</p>
+          <h3>The 5 Rules of Improv</h3>
+          <ol class="rules-list">
+            <li>
+              <span class="rule-num" style="color: var(--module-1-color);">1</span>
+              <span><strong>Say "yes, and."</strong> Accept what your partner gives you and add something new.</span>
+            </li>
+            <li>
+              <span class="rule-num" style="color: var(--module-2-color);">2</span>
+              <span><strong>Support your partner.</strong> Make the people around you look good.</span>
+            </li>
+            <li>
+              <span class="rule-num" style="color: var(--module-3-color);">3</span>
+              <span><strong>There are no mistakes.</strong> Everything becomes part of the scene.</span>
+            </li>
+            <li>
+              <span class="rule-num" style="color: var(--module-4-color);">4</span>
+              <span><strong>Commit fully.</strong> If you're going to do it, do it all the way.</span>
+            </li>
+            <li>
+              <span class="rule-num" style="color: var(--module-5-color);">5</span>
+              <span><strong>Listen more than you talk.</strong> Pay attention to what's actually happening.</span>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Starting a scene -->
+        <div class="ref-card">
+          <p class="ref-card-heading">Scene work</p>
+          <h3>Starting a Scene</h3>
+          <p>Establish three things as quickly as you can:</p>
+          <ul>
+            <li><strong>Who</strong> are you to each other? (friends, strangers, siblings, aliens)</li>
+            <li><strong>Where</strong> are you? (show it or say it)</li>
+            <li><strong>What</strong> is happening? (something needs to be going on)</li>
+          </ul>
+        </div>
+
+        <!-- Building a character -->
+        <div class="ref-card">
+          <p class="ref-card-heading">Character work</p>
+          <h3>Building a Character</h3>
+          <p>Pick one or more of these and commit:</p>
+          <ul>
+            <li><strong>Body:</strong> Change something physical and let everything else follow</li>
+            <li><strong>Attitude:</strong> Pick one strong emotion or personality trait and crank it up</li>
+            <li><strong>Want:</strong> Give your character something they want right now in this scene</li>
+          </ul>
+        </div>
+
+        <!-- Things to add when stuck -->
+        <div class="ref-card">
+          <p class="ref-card-heading">When you're stuck</p>
+          <h3>Things to Add When You Don't Know What to Say</h3>
+          <ul>
+            <li>A detail about the environment ("It smells like burned popcorn in here.")</li>
+            <li>How your character feels ("I'm kind of nervous about this.")</li>
+            <li>A new piece of information ("We have to be there in five minutes.")</li>
+          </ul>
+        </div>
+
+        <!-- Don'ts -->
+        <div class="ref-card">
+          <p class="ref-card-heading">Watch out for these</p>
+          <h3>Don't Do These</h3>
+          <ul class="dont-list">
+            <li>
+              <span class="dont-marker">✕</span>
+              <span><strong>Block:</strong> Don't reject what your partner just established</span>
+            </li>
+            <li>
+              <span class="dont-marker">✕</span>
+              <span><strong>Ask too many questions:</strong> Questions put the work on your partner. Make statements instead.</span>
+            </li>
+            <li>
+              <span class="dont-marker">✕</span>
+              <span><strong>Plan ahead:</strong> If you're thinking about your next line, you're not listening</span>
+            </li>
+            <li>
+              <span class="dont-marker">✕</span>
+              <span><strong>Play it safe:</strong> The person who goes all in always gets a bigger reaction than the person who holds back</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Comedy patterns -->
+        <div class="ref-card">
+          <p class="ref-card-heading">Comedy patterns</p>
+          <h3>The Patterns That Make Things Funny</h3>
+          <ul>
+            <li><strong>Rule of three:</strong> Set up a pattern with two normal things, break it with a third unexpected thing</li>
+            <li><strong>Escalation:</strong> Whatever just happened, make the next thing bigger</li>
+            <li><strong>Callback:</strong> Reference something from earlier in the scene in a new context</li>
+            <li><strong>Specificity:</strong> "A 1997 minivan with a bumper sticker that said 'my other car is also terrible'" is always funnier than "a car"</li>
+          </ul>
+        </div>
+
+        <!-- Timing tips -->
+        <div class="ref-card">
+          <p class="ref-card-heading">Timing</p>
+          <h3>Timing Tips</h3>
+          <ul>
+            <li><strong>The pause:</strong> Sometimes the funniest thing you can do is nothing. Let the moment land.</li>
+            <li><strong>The reaction:</strong> The biggest laughs often come from reacting to the funny thing, not doing the funny thing</li>
+            <li><strong>Know when to stop talking:</strong> A look between two characters can say more than a paragraph of dialogue</li>
+          </ul>
+        </div>
+
+        <!-- Sketch comedy structure -->
+        <div class="ref-card">
+          <p class="ref-card-heading">Sketch writing</p>
+          <h3>Sketch Comedy Structure</h3>
+          <ol class="sketch-steps">
+            <li><strong>Setup:</strong> Establish who, where, and what — fast</li>
+            <li><strong>Introduce the game:</strong> The one central funny idea this sketch is built around</li>
+            <li><strong>Heighten:</strong> Escalate the game. Each beat is bigger than the last.</li>
+            <li><strong>Button:</strong> End on a laugh. Get out before the energy drops.</li>
+          </ol>
+        </div>
+
+        <!-- Before you go on -->
+        <div class="ref-card ref-card-full ref-card-closing">
+          <p class="ref-card-heading">Before you go on</p>
+          <ul>
+            <li>Trust your partner</li>
+            <li>Trust yourself</li>
+            <li>Be willing to look ridiculous</li>
+            <li>Have fun</li>
+          </ul>
+        </div>
+
+      </div><!-- /ref-grid -->
+
+    </main>
+
+  </div>
+
+  <script src="js/navigation.js"></script>
+</body>
+</html>

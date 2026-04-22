@@ -1,0 +1,201 @@
+/* ============================================================
+   videos/library.css
+   Styles for the video library page.
+============================================================ */
+
+
+/* ---- Filter bar ---- */
+
+.video-filter-bar {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-lg) var(--space-xl) 0;
+}
+
+
+/* ---- Video grid ---- */
+
+.video-library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  padding: var(--space-lg) var(--space-xl) var(--space-2xl);
+}
+
+
+/* ---- Video card ---- */
+
+.video-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.video-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Thumbnail wrapper — 16:9 ratio */
+.video-thumb {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: #1a1a2e;
+  overflow: hidden;
+}
+
+.video-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s ease;
+}
+
+/* Clickable thumbnail cursor */
+.video-thumb-clickable {
+  cursor: pointer;
+}
+
+/* Iframe injected when playing — fills the wrapper exactly like the img does */
+.video-thumb iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Play button overlay on thumbnail */
+.video-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.video-card:hover .video-thumb-play {
+  opacity: 1;
+}
+
+.video-thumb-play-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  padding-left: 3px; /* optical center for the triangle */
+}
+
+/* Card body */
+.video-card-body {
+  padding: var(--space-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.video-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.video-card-source {
+  font-size: 0.72rem;
+  color: var(--color-gray-text);
+}
+
+.video-card-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-dark-text);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.video-card-watch-for {
+  font-size: 0.82rem;
+  color: var(--color-gray-text);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.video-card-watch-label {
+  font-weight: 600;
+  color: var(--color-dark-text);
+}
+
+/* Footer with badges + watch link */
+.video-card-footer {
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.video-card-badges {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.badge-length {
+  background: #f0f0f0;
+  color: var(--color-gray-text);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.badge-module-link {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #e8e8f0;
+  color: var(--color-dark-text);
+  text-decoration: none;
+}
+
+.badge-module-link:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1024px) {
+  .video-library-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .video-library-grid {
+    grid-template-columns: 1fr;
+    padding: var(--space-lg);
+  }
+  .video-filter-bar {
+    padding: var(--space-md) var(--space-lg) 0;
+  }
+}

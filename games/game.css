@@ -1,0 +1,282 @@
+/* ============================================================
+   game.css
+   Styles for the individual game detail page (game.html).
+============================================================ */
+
+
+/* ---- Hero banner ---- */
+
+.game-page-hero {
+  background: linear-gradient(135deg, var(--game-color, var(--color-teal)) 0%, rgba(0,0,0,0.35) 100%),
+              linear-gradient(135deg, var(--color-navy) 0%, #252545 100%);
+  padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+  border-bottom: 4px solid var(--game-color, var(--color-teal));
+}
+
+.game-page-hero-inner {
+  max-width: 720px;
+}
+
+.back-link-hero {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: var(--space-md);
+  transition: color 0.15s ease;
+}
+
+.back-link-hero:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.game-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.game-hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.badge-ai-hero {
+  background: rgba(255, 220, 50, 0.2);
+  border-color: rgba(255, 220, 50, 0.4);
+  color: #FFE066;
+}
+
+.game-page-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--color-white);
+  margin: 0 0 var(--space-sm);
+  line-height: 1.2;
+}
+
+.game-page-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0 0 var(--space-md);
+  max-width: 600px;
+}
+
+.game-page-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.game-fact {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ---- Page body ---- */
+
+.game-page-body {
+  max-width: 720px;
+  padding: var(--space-xl);
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--color-gray-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: var(--space-xl);
+  transition: color 0.15s ease;
+}
+
+.back-link:hover {
+  color: var(--color-dark-text);
+}
+
+
+/* ---- Meta row: good for + category tags ---- */
+
+.game-page-meta {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.game-good-for {
+  font-size: 0.875rem;
+  color: var(--color-gray-text);
+  margin: 0;
+}
+
+.game-good-for strong {
+  color: var(--color-dark-text);
+}
+
+.game-category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* Category-colored tags (reuse from library.css) */
+.tag-warm-ups      { background-color: #FDE8E4; color: #B83A20; }
+.tag-yes-and       { background-color: #FFFDE6; color: #8A7000; }
+.tag-characters    { background-color: #D9F5FC; color: #0273A0; }
+.tag-scenes        { background-color: #FAD6E0; color: #901030; }
+.tag-comedy        { background-color: #D4EDE9; color: #1A6058; }
+.tag-musical       { background-color: #EDE0F8; color: #6B28A8; }
+.tag-solo-friendly { background-color: #E8F4E8; color: #246024; }
+
+
+/* ---- Sections ---- */
+
+.game-page-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.game-page-section h2 {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-gray-text);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-border);
+}
+
+
+/* ---- Rules ---- */
+
+.game-page-rules {
+  list-style: decimal;
+  padding-left: var(--space-xl);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-dark-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.game-page-rules li {
+  padding-left: var(--space-xs);
+}
+
+
+/* ---- Example ---- */
+
+.example-block {
+  background: #f7f8fc;
+  border-left: 4px solid var(--color-teal);
+  padding: var(--space-lg);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--color-dark-text);
+}
+
+
+/* ---- Variations ---- */
+
+.game-page-variations {
+  list-style: disc;
+  padding-left: var(--space-xl);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-dark-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.game-page-variations li {
+  padding-left: var(--space-xs);
+}
+
+
+/* ---- Prompts ---- */
+
+.game-page-prompts {
+  list-style: decimal;
+  padding-left: var(--space-xl);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-dark-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.game-page-prompts li {
+  padding-left: var(--space-xs);
+  color: var(--color-gray-text);
+}
+
+
+/* ---- AI play CTA ---- */
+
+.game-page-ai-cta {
+  background: linear-gradient(135deg, var(--color-navy) 0%, #252545 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.game-page-ai-cta p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-md);
+}
+
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .game-page-title {
+    font-size: 1.6rem;
+  }
+
+  .game-page-hero {
+    padding: var(--space-lg);
+  }
+
+  .game-page-body {
+    padding: var(--space-lg);
+  }
+}
+
+
+/* ---- Print ---- */
+
+@media print {
+  .sidebar, .sidebar-toggle, .sidebar-overlay,
+  .game-page-hero, .back-link-hero, .game-page-ai-cta {
+    display: none !important;
+  }
+
+  .site-wrapper { display: block; }
+  .main-content { margin: 0; padding: 0; }
+  .game-page-body { padding: 0; }
+  .game-page-section h2 { font-size: 10pt; }
+  .game-page-rules, .game-page-variations, .game-page-prompts { font-size: 11pt; }
+}

@@ -1,0 +1,1143 @@
+/* ============================================================
+   module.css
+   Styles for all module pages (module1–6).
+   Loaded in addition to global style.css.
+
+   Table of contents:
+   1. Module hero header
+   2. Module section nav (sticky tab bar)
+   3. Module content sections
+   4. Lesson accordion
+   5. Video placeholder
+   6. Game spotlight card
+   7. AI play section — setup panel
+   8. AI play section — API key overlay
+   9. AI play section — chat interface
+   10. AI play section — reflection panel
+   11. Responsive
+============================================================ */
+
+
+/* ============================================================
+   1. MODULE HERO HEADER
+   Each module gets its own color via --module-color on the element.
+============================================================ */
+
+.module-hero {
+  background: linear-gradient(135deg, var(--color-navy) 0%, #252545 100%);
+  padding: var(--space-xl);
+  border-bottom: 4px solid var(--module-color, var(--color-orange));
+  position: relative;
+}
+
+.module-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--module-color, var(--color-orange));
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-sans);
+}
+
+.module-hero h1 {
+  color: var(--color-white);
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.module-hero-meta {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.module-hero-badge {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+}
+
+
+/* ============================================================
+   2. MODULE SECTION NAV
+   Sticky horizontal tab bar that links to each section.
+============================================================ */
+
+.module-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.module-tabs::-webkit-scrollbar { display: none; }
+
+.module-tab {
+  flex-shrink: 0;
+  padding: 12px var(--space-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-gray-text);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.module-tab:hover {
+  color: var(--color-dark-text);
+  text-decoration: none;
+}
+
+.module-tab.active {
+  color: var(--module-color, var(--color-orange));
+  border-bottom-color: var(--module-color, var(--color-orange));
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   3. MODULE CONTENT SECTIONS
+============================================================ */
+
+.module-section {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.module-section:last-child {
+  border-bottom: none;
+}
+
+.module-section-heading {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-lg);
+}
+
+/* Stub placeholder for sections not yet built */
+.section-stub {
+  background-color: #f8f8fb;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--color-gray-text);
+  font-style: italic;
+}
+
+
+/* ============================================================
+   4. LESSON ACCORDION
+   Used in "The Basics" section for collapsible concept cards.
+============================================================ */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.accordion-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-dark-text);
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.accordion-trigger:hover {
+  background-color: #f8f8f8;
+}
+
+.accordion-icon {
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: var(--color-gray-text);
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-dark-text);
+}
+
+.accordion-body[hidden] { display: none; }
+
+
+/* ============================================================
+   5. VIDEO PLACEHOLDER
+============================================================ */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.video-placeholder {
+  background-color: #1a1a2e;
+  border-radius: var(--radius-md);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.video-placeholder-icon {
+  font-size: 2rem;
+  opacity: 0.4;
+}
+
+.video-caption {
+  font-size: 0.82rem;
+  color: var(--color-gray-text);
+  margin-top: var(--space-sm);
+  text-align: center;
+}
+
+
+/* ============================================================
+   6. GAME SPOTLIGHT CARD
+============================================================ */
+
+.game-spotlight {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.game-spotlight-header {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.game-spotlight-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+}
+
+.game-spotlight-body {
+  padding: var(--space-lg);
+}
+
+.game-spotlight-body ol {
+  list-style: decimal;
+  padding-left: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   7. AI PLAY SECTION — SETUP PANEL
+   The intro screen before the game starts.
+============================================================ */
+
+/* The whole AI play zone — dark navy background */
+.ai-play-zone {
+  background-color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Each panel inside the zone: setup, chat, reflection */
+.ai-panel {
+  padding: var(--space-xl);
+}
+
+.ai-panel[hidden] { display: none; }
+
+.ai-panel-heading {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.ai-panel-intro {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-bottom: var(--space-lg);
+  max-width: 600px;
+}
+
+/* "How it works" and tips lists */
+.ai-how-it-works {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.ai-how-it-works h3 {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-soft-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.ai-how-it-works ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ai-how-it-works li {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  padding-left: var(--space-md);
+  position: relative;
+  line-height: 1.5;
+}
+
+.ai-how-it-works li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-teal);
+  font-size: 0.75rem;
+  top: 1px;
+}
+
+/* Prompt picker */
+.prompt-picker-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-soft-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.prompt-option {
+  padding: 10px var(--space-md);
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  line-height: 1.4;
+}
+
+.prompt-option:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+}
+
+.prompt-option.selected {
+  background-color: rgba(3, 174, 210, 0.2);
+  border-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+/* Custom prompt input */
+.prompt-custom {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.prompt-custom-input {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  padding: 9px var(--space-md);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.prompt-custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.prompt-custom-input:focus {
+  border-color: var(--color-teal);
+}
+
+/* Who goes first */
+.who-starts-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-soft-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.who-starts-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.who-starts-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.who-starts-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+}
+
+.who-starts-btn.selected {
+  background-color: rgba(248, 222, 34, 0.15);
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   8. AI PLAY SECTION — API KEY OVERLAY
+============================================================ */
+
+.api-key-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(27, 27, 47, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  z-index: 10;
+}
+
+.api-key-overlay[hidden] { display: none; }
+
+.api-key-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.api-key-box h3 {
+  font-family: var(--font-serif);
+  color: var(--color-white);
+  font-size: 1.2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.api-key-box p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: var(--space-lg);
+  line-height: 1.55;
+}
+
+.api-key-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  padding: 10px var(--space-md);
+  margin-bottom: var(--space-sm);
+  outline: none;
+  width: 100%;
+  letter-spacing: 0.03em;
+  transition: border-color 0.15s ease;
+}
+
+.api-key-input:focus {
+  border-color: var(--color-teal);
+}
+
+.api-key-error {
+  color: #ff6b6b;
+  font-size: 0.82rem;
+  margin-bottom: var(--space-sm);
+  min-height: 1.2em;
+}
+
+
+/* ============================================================
+   9. AI PLAY SECTION — CHAT INTERFACE
+============================================================ */
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-game-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chat-round-counter {
+  font-size: 0.78rem;
+  color: var(--color-soft-teal);
+  font-weight: 600;
+}
+
+/* Scrollable message list */
+.chat-messages {
+  padding: var(--space-md) var(--space-lg);
+  min-height: 300px;
+  max-height: 480px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  scroll-behavior: smooth;
+}
+
+/* Individual message row */
+.chat-message {
+  display: flex;
+  gap: var(--space-sm);
+  max-width: 85%;
+}
+
+/* AI messages — left side */
+.chat-message-ai {
+  align-self: flex-start;
+}
+
+.chat-message-ai .chat-bubble {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 4px 16px 16px 16px;
+}
+
+.chat-avatar {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background-color: rgba(3, 174, 210, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* Student messages — right side */
+.chat-message-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chat-message-user .chat-bubble {
+  background-color: rgba(248, 222, 34, 0.15);
+  color: var(--color-white);
+  border-radius: 16px 4px 16px 16px;
+  border: 1px solid rgba(248, 222, 34, 0.2);
+}
+
+.chat-bubble {
+  padding: 10px var(--space-md);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+/* Typing indicator (three animated dots) */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 12px var(--space-md);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 4px 16px 16px 16px;
+  align-items: center;
+}
+
+.typing-dot {
+  width: 7px;
+  height: 7px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: typingPulse 1.2s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingPulse {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30%           { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* Chat input area */
+.chat-input-area {
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.chat-input-row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.chat-input {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  padding: 10px var(--space-md);
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s ease;
+  line-height: 1.45;
+}
+
+.chat-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+.chat-input:focus        { border-color: rgba(255, 255, 255, 0.35); }
+.chat-input:disabled     { opacity: 0.4; cursor: not-allowed; }
+
+.chat-send-btn {
+  padding: 10px 18px;
+  background-color: var(--color-teal);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  align-self: flex-end;
+  white-space: nowrap;
+}
+
+.chat-send-btn:hover    { opacity: 0.85; }
+.chat-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.chat-actions-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.end-scene-btn {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  padding: 2px 0;
+  transition: color 0.15s ease;
+}
+
+.end-scene-btn:hover        { color: rgba(255, 255, 255, 0.8); }
+.end-scene-btn.prominent    { color: rgba(255, 255, 255, 0.75); font-weight: 600; }
+
+/* Error message in chat */
+.chat-error {
+  font-size: 0.82rem;
+  color: #ff8a80;
+  text-align: center;
+  padding: var(--space-xs) 0;
+}
+
+
+/* ============================================================
+   10. AI PLAY SECTION — REFLECTION PANEL
+============================================================ */
+
+.reflection-heading {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-yellow);
+  margin-bottom: var(--space-md);
+}
+
+.reflection-questions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.reflection-questions li {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+}
+
+.reflection-q-marker {
+  color: var(--color-teal);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.reflection-coda {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+}
+
+.reflection-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+
+/* ============================================================
+   11. PROSE SECTIONS (flowing text, no accordion)
+============================================================ */
+
+.module-subsection {
+  margin-bottom: var(--space-xl);
+}
+
+.module-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.module-subsection-heading {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-md);
+}
+
+.module-prose {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-dark-text);
+  max-width: 660px;
+}
+
+.module-prose p {
+  margin-bottom: var(--space-md);
+}
+
+.module-prose ul,
+.module-prose ol {
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.module-prose ul { list-style: disc; }
+.module-prose ol { list-style: decimal; }
+
+.module-prose li { line-height: 1.55; }
+
+.module-prose strong { font-weight: 700; }
+.module-prose em     { font-style: italic; }
+
+/* Bullet-vs-bullet comparison block (two columns) */
+.comparison-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.comparison-col {
+  background-color: #f8f8fb;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.comparison-col h4 {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: var(--space-sm);
+}
+
+.comparison-col.good { border-top: 3px solid var(--color-green); }
+.comparison-col.good h4 { color: var(--color-green); }
+.comparison-col.bad  { border-top: 3px solid var(--color-red); }
+.comparison-col.bad  h4 { color: var(--color-red); }
+
+.comparison-col ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-dark-text);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Callout box (e.g. "Why this game is great") */
+.callout-box {
+  background-color: #f0f6ff;
+  border-left: 3px solid var(--color-teal);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-md) var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.callout-box h4 {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.callout-box p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-dark-text);
+  margin: 0;
+}
+
+/* Example conversation for F/U game */
+.example-exchange {
+  background-color: #f8f8fb;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: var(--space-md);
+}
+
+.example-exchange-row {
+  padding: 10px var(--space-lg);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.example-exchange-row:last-child {
+  border-bottom: none;
+}
+
+.example-exchange-row.setup {
+  background-color: #f0f0f5;
+  font-style: italic;
+  color: var(--color-gray-text);
+}
+
+.example-exchange-row.fortunately {
+  background-color: #ecf9f5;
+}
+
+.example-exchange-row.unfortunately {
+  background-color: #fff5f0;
+}
+
+.exchange-label {
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 6px;
+}
+
+.exchange-label.fortunately   { color: var(--color-green); }
+.exchange-label.unfortunately { color: var(--color-orange); }
+.exchange-label.setup         { color: var(--color-gray-text); }
+
+
+/* ============================================================
+   12. VIDEO EMBED
+============================================================ */
+
+.video-embed-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: #000;
+  margin-bottom: var(--space-sm);
+}
+
+.video-embed-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-caption {
+  font-size: 0.82rem;
+  color: var(--color-gray-text);
+  margin-top: var(--space-sm);
+}
+
+/* Formatted content inside AI chat bubbles (markdown rendered to HTML) */
+.chat-bubble p {
+  margin: 0 0 0.45em;
+  line-height: 1.55;
+}
+.chat-bubble p:last-child { margin-bottom: 0; }
+
+.chat-bubble ul {
+  list-style: disc;
+  padding-left: 1.25em;
+  margin: 0.3em 0 0.5em;
+}
+.chat-bubble li {
+  margin-bottom: 0.2em;
+  line-height: 1.5;
+}
+.chat-bubble hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0.5em 0;
+}
+.chat-bubble strong {
+  font-weight: 700;
+}
+
+
+/* Quick check section label */
+.quick-check-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-lg);
+}
+
+
+/* ============================================================
+   13. QUIZ
+============================================================ */
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.quiz-question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.quiz-q-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-text);
+}
+
+.quiz-q-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-dark-text);
+  line-height: 1.45;
+  margin-bottom: var(--space-xs);
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.quiz-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: 10px var(--space-md);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-dark-text);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.45;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--color-teal);
+  background-color: #f5fcff;
+}
+
+/* After answering */
+.quiz-option.correct {
+  background-color: #e8f7f0;
+  border-color: var(--color-green);
+  color: #1a5e3a;
+  font-weight: 600;
+}
+
+.quiz-option.incorrect {
+  background-color: #ffeaea;
+  border-color: var(--color-red);
+  color: #8a1030;
+}
+
+.quiz-option.dimmed {
+  opacity: 0.4;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-letter {
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.quiz-feedback {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px var(--space-md);
+  border-radius: var(--radius-sm);
+  min-height: 1.5em;
+}
+
+.quiz-feedback.correct   { color: #1a5e3a; background-color: #e8f7f0; }
+.quiz-feedback.incorrect { color: #8a1030; background-color: #ffeaea; }
+
+
+/* ============================================================
+   14. RESPONSIVE
+============================================================ */
+
+@media (max-width: 768px) {
+  .module-hero {
+    padding: 64px var(--space-lg) var(--space-lg);
+  }
+
+  .module-section {
+    padding: var(--space-lg);
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-panel {
+    padding: var(--space-lg);
+  }
+
+  .who-starts-buttons {
+    flex-direction: column;
+  }
+
+  .chat-messages {
+    max-height: 360px;
+  }
+
+  .reflection-actions {
+    flex-direction: column;
+  }
+
+  .reflection-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

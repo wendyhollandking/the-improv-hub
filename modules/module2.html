@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 2: Yes, And — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="module.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="../games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Module header -->
+      <header class="module-hero" style="--module-color: var(--module-2-color);" aria-labelledby="module-title">
+        <p class="module-eyebrow">Module 2</p>
+        <h1 id="module-title">Yes, And</h1>
+      </header>
+
+      <!-- Section tab bar -->
+      <nav class="module-tabs" aria-label="Module sections">
+        <a href="#basics" class="module-tab">The basics</a>
+        <a href="#watch"  class="module-tab">Watch it</a>
+        <a href="#games"  class="module-tab">Game guide</a>
+        <a href="#play"   class="module-tab">Play with AI</a>
+      </nav>
+
+
+      <!-- ======================================================
+           SECTION 1: THE BASICS
+      ====================================================== -->
+      <section id="basics" class="module-section" aria-labelledby="basics-heading">
+        <h2 class="module-section-heading" id="basics-heading">The basics</h2>
+
+        <!-- What does blocking actually do? -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">What is blocking, and why does it kill scenes?</h3>
+          <div class="module-prose">
+            <p>
+              "Blocking" is what happens when a player refuses or denies what their partner just
+              offered. It sounds like this: "That's not a spaceship, it's a bus." Or: "I've never
+              been to Paris." Or just: "What? No."
+            </p>
+            <p>
+              Blocking doesn't create conflict — it creates a dead end. The scene can't move forward
+              because one player just erased the shared reality the other player was building.
+              Now someone has to start over, and whatever momentum existed is gone.
+            </p>
+            <p>
+              It usually happens when someone gets scared of where the scene is going and tries to
+              steer it back somewhere safer. The fix isn't to plan better — it's to trust that
+              wherever things are going, you can work with it.
+            </p>
+          </div>
+        </div>
+
+        <!-- The "and" is the hard part -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">The "and" is the hard part</h3>
+          <div class="module-prose">
+            <p>
+              Most people get the "yes" part reasonably quickly. You accept what your partner says.
+              Fine. What takes longer to learn is the "and" — because "and" requires you to actually
+              contribute something of your own.
+            </p>
+            <p>
+              A lot of beginners say "yes" and then ask a question. "Yes! And... what should we do
+              next?" That puts all the work back on your partner. The "and" means you take your turn.
+              You add a new detail, a new character choice, a new development in the scene. Something
+              that gives your partner something to work with.
+            </p>
+            <p>
+              Think of it like passing a ball. The "yes" is catching it. The "and" is throwing it
+              back somewhere interesting.
+            </p>
+
+            <!-- Comparison block -->
+            <div class="comparison-block">
+              <div class="comparison-col bad">
+                <h4>Blocking (avoid this)</h4>
+                <ul>
+                  <li>Denying what your partner said</li>
+                  <li>Contradicting established facts</li>
+                  <li>Changing the subject completely</li>
+                  <li>Asking questions instead of making offers</li>
+                </ul>
+              </div>
+              <div class="comparison-col good">
+                <h4>Yes, And (aim for this)</h4>
+                <ul>
+                  <li>Accepting what your partner established</li>
+                  <li>Building on their specific details</li>
+                  <li>Adding one new thing of your own</li>
+                  <li>Giving your partner something to react to</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Making your partner look good -->
+        <div class="module-subsection">
+          <h3 class="module-subsection-heading">Making your partner look good</h3>
+          <div class="module-prose">
+            <p>
+              One of the reasons Yes, And works is that it flips your instinct. Most people walk
+              into a creative situation thinking about themselves: what should I do, how do I look,
+              what's my move. Yes, And points your attention at your partner instead.
+            </p>
+            <p>
+              When you're focused on making your partner look good, a few things happen. You listen
+              better, because you're actually paying attention to what they're offering. You say yes
+              more naturally, because your job is to support their ideas, not compete with them. And
+              the scene gets better for both of you, because now both players are supporting each
+              other instead of trying to win.
+            </p>
+            <p>
+              The weird thing is: it works in the opposite direction too. When you stop trying to
+              be the funniest person in the scene and start trying to make your partner funny, you
+              usually end up funnier.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 2: WATCH IT IN ACTION
+      ====================================================== -->
+      <section id="watch" class="module-section" aria-labelledby="watch-heading">
+        <h2 class="module-section-heading" id="watch-heading">Watch it in action</h2>
+
+        <!-- YouTube embed -->
+        <div class="video-embed-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/NmafmRIeet0"
+            title="Tina Fey on the Rules of Improv"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="video-caption">
+          Tina Fey on the rules of improv — including why Yes, And matters far beyond the stage.
+        </p>
+
+        <!-- Quick check quiz -->
+        <p class="quick-check-label">Quick check</p>
+
+        <div class="quiz">
+
+          <div class="quiz-question" data-correct="b">
+            <p class="quiz-q-number">Question 1</p>
+            <p class="quiz-q-text">What does it mean when a player "blocks" in an improv scene?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-option="a">
+                <span class="quiz-letter">A</span>
+                They pause the scene to check in with the audience about what should happen next.
+              </button>
+              <button class="quiz-option" data-option="b">
+                <span class="quiz-letter">B</span>
+                They deny or refuse to accept what their partner just established in the scene.
+              </button>
+              <button class="quiz-option" data-option="c">
+                <span class="quiz-letter">C</span>
+                They move their character to block their partner's path across the stage.
+              </button>
+              <button class="quiz-option" data-option="d">
+                <span class="quiz-letter">D</span>
+                They take over the scene by talking louder than their partner.
+              </button>
+            </div>
+            <p class="quiz-feedback correct" hidden>
+              Right. Blocking is refusing to accept what your partner just offered — it collapses the shared reality you were both building.
+            </p>
+            <p class="quiz-feedback incorrect" hidden>
+              Not quite. Blocking is about denying what your partner just established — it has nothing to do with physical position or volume.
+            </p>
+          </div>
+
+          <div class="quiz-question" data-correct="c">
+            <p class="quiz-q-number">Question 2</p>
+            <p class="quiz-q-text">The "Yes" in "Yes, And" means accepting your partner's offer. What does the "And" ask you to do?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-option="a">
+                <span class="quiz-letter">A</span>
+                Literally say the word "and" before every line to signal that you're following the rule.
+              </button>
+              <button class="quiz-option" data-option="b">
+                <span class="quiz-letter">B</span>
+                Ask your partner a question so they can keep moving the scene forward.
+              </button>
+              <button class="quiz-option" data-option="c">
+                <span class="quiz-letter">C</span>
+                Add something new of your own — a detail, a choice, a development that gives your partner something to work with.
+              </button>
+              <button class="quiz-option" data-option="d">
+                <span class="quiz-letter">D</span>
+                Agree with everything your partner says no matter what, even if it contradicts the scene.
+              </button>
+            </div>
+            <p class="quiz-feedback correct" hidden>
+              Exactly. The "and" is your contribution. Accepting isn't enough — you have to add something that gives your partner a real offer to react to.
+            </p>
+            <p class="quiz-feedback incorrect" hidden>
+              Not quite. Questions put the work back on your partner. The "and" means you take your turn — add a new detail, a new development, something your partner can actually build on.
+            </p>
+          </div>
+
+        </div><!-- /quiz -->
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 3: GAME GUIDE
+      ====================================================== -->
+      <section id="games" class="module-section" aria-labelledby="games-heading">
+        <h2 class="module-section-heading" id="games-heading">Game guide</h2>
+
+        <!-- Game spotlight: Yes, And Scenes -->
+        <div class="game-spotlight">
+          <div class="game-spotlight-header">
+            <div>
+              <h3 class="game-spotlight-title">Yes, And Scenes</h3>
+              <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap; margin-top: var(--space-xs);">
+                <span class="tag tag-yes-and">Yes, And</span>
+                <span class="tag tag-scenes">Scenes</span>
+                <span class="badge" style="background: rgba(244,91,38,0.1); color: var(--color-orange); font-size: 0.72rem; padding: 2px 8px; border-radius: 20px;">✨ AI playable</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-spotlight-body">
+            <div class="module-prose">
+              <p>
+                Two players build a scene together, line by line, with a single constraint: every
+                response has to accept what the other person just said and add something new. No
+                denying. No redirecting. No questions that dump the work back on your partner.
+                Just: yes, and.
+              </p>
+              <p>
+                There's no structure beyond that — the scene goes wherever the two players take it.
+                You'll set a location, discover characters, find out what's happening. All of it
+                emerges from the back-and-forth. The scenes that work best are the ones where both
+                players trust each other enough to follow the offers.
+              </p>
+            </div>
+
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--color-dark-text); margin: var(--space-lg) 0 var(--space-sm);">How to play</h4>
+            <div class="module-prose">
+              <ol>
+                <li>Pick or receive a prompt — a location, a relationship, a situation, whatever.</li>
+                <li>One player opens with a line that establishes something about the scene.</li>
+                <li>The other player accepts what was just said and adds one new thing.</li>
+                <li>Keep going. Every line should acknowledge the previous one and move the scene forward.</li>
+                <li>Let the scene find its own direction — don't plan ahead.</li>
+                <li>After 6–8 exchanges, steer toward a natural ending.</li>
+              </ol>
+            </div>
+
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--color-dark-text); margin: var(--space-lg) 0 var(--space-sm);">Common pitfalls to watch for</h4>
+            <div class="module-prose">
+              <ul>
+                <li>
+                  <strong>Blocking.</strong> Directly or indirectly denying what your partner said.
+                  "I've never been here before" when they just said you come here all the time.
+                </li>
+                <li>
+                  <strong>Asking questions instead of making offers.</strong> "What do you think we
+                  should do?" puts the work back on your partner. Make a statement instead.
+                </li>
+                <li>
+                  <strong>Planning ahead.</strong> If you're already writing your next line while your
+                  partner is talking, you're not listening. The best offers come from what's actually
+                  happening in the scene, not from your mental screenplay.
+                </li>
+                <li>
+                  <strong>Over-justifying.</strong> You don't need to explain everything. If your
+                  partner says there's a monkey in the room, just accept it and build on it. You
+                  don't need to explain why the monkey is there.
+                </li>
+              </ul>
+            </div>
+
+            <div class="callout-box">
+              <h4>The point of the game</h4>
+              <p>
+                Yes, And Scenes aren't about being funny. They're about practicing the reflex of
+                accepting and building, over and over, until it becomes automatic. The funny usually
+                follows on its own — but only if you stop chasing it and focus on your partner.
+              </p>
+            </div>
+
+          </div>
+        </div><!-- /game-spotlight -->
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 4: PLAY WITH AI
+           States: setup → (api key overlay if needed) → chat → reflection
+      ====================================================== -->
+      <section id="play" class="module-section" aria-labelledby="play-heading">
+        <h2 class="module-section-heading" id="play-heading">Play: Yes, And Scenes with AI</h2>
+
+        <!-- The dark navy zone that contains all AI play states -->
+        <div class="ai-play-zone">
+
+          <!-- API key overlay — shown if no key stored, hidden otherwise -->
+          <div class="api-key-overlay" id="api-key-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="key-dialog-heading">
+            <div class="api-key-box">
+              <h3 id="key-dialog-heading">One quick thing</h3>
+              <p>
+                Playing with AI uses the Anthropic API. You'll need an API key — your teacher
+                may have one for the class, or you can get your own at console.anthropic.com.
+                <br><br>
+                Your key is only saved for this browser session and never sent anywhere except
+                directly to Anthropic.
+              </p>
+              <input
+                type="password"
+                id="api-key-input"
+                class="api-key-input"
+                placeholder="sk-ant-…"
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <p class="api-key-error" id="api-key-error" aria-live="polite"></p>
+              <button class="btn btn-teal" id="api-key-submit" style="width: 100%;">
+                Let's play →
+              </button>
+            </div>
+          </div>
+
+          <!-- ---- SETUP PANEL ---- -->
+          <div class="ai-panel" id="ai-setup">
+
+            <p class="ai-panel-intro">
+              Time to put it into practice. You're going to run a Yes, And scene with an AI improv
+              partner. Your only job: accept whatever the AI says and add something new. Don't plan.
+              Don't steer. Just react and see where it goes.
+            </p>
+
+            <div class="ai-how-it-works">
+              <h3>How it works</h3>
+              <ul>
+                <li>Pick a prompt below, or type your own scene idea</li>
+                <li>Choose whether you want to open the scene or let the AI start</li>
+                <li>Go back and forth — accept what the AI says and add one new thing each time</li>
+                <li>The scene will run about 6–8 exchanges, then wrap up naturally</li>
+                <li>You can play as many times as you want</li>
+              </ul>
+            </div>
+
+            <!-- Prompt picker -->
+            <p class="prompt-picker-label">Pick a scene prompt</p>
+            <div class="prompt-list" id="prompt-list" role="radiogroup" aria-label="Scene prompts">
+
+              <button class="prompt-option" data-prompt="We're lost in a grocery store that seems to go on forever" role="radio" aria-checked="false">
+                We're lost in a grocery store that seems to go on forever
+              </button>
+              <button class="prompt-option" data-prompt="We just discovered our school has a secret underground floor" role="radio" aria-checked="false">
+                We just discovered our school has a secret underground floor
+              </button>
+              <button class="prompt-option" data-prompt="We're two squirrels planning a heist on a bird feeder" role="radio" aria-checked="false">
+                We're two squirrels planning a heist on a bird feeder
+              </button>
+              <button class="prompt-option" data-prompt="We're astronauts, and something weird is growing in the space station kitchen" role="radio" aria-checked="false">
+                We're astronauts, and something weird is growing in the space station kitchen
+              </button>
+              <button class="prompt-option" data-prompt="We both showed up to a costume party wearing the exact same costume" role="radio" aria-checked="false">
+                We both showed up to a costume party wearing the exact same costume
+              </button>
+              <button class="prompt-option" data-prompt="We're explorers and we just found a door at the bottom of the ocean" role="radio" aria-checked="false">
+                We're explorers and we just found a door at the bottom of the ocean
+              </button>
+              <button class="prompt-option" data-prompt="We're sitting in detention and the teacher just fell asleep" role="radio" aria-checked="false">
+                We're sitting in detention and the teacher just fell asleep
+              </button>
+              <button class="prompt-option" data-prompt="We're running a lemonade stand but we forgot how to make lemonade" role="radio" aria-checked="false">
+                We're running a lemonade stand but we forgot how to make lemonade
+              </button>
+
+            </div>
+
+            <!-- Custom prompt -->
+            <div class="prompt-custom">
+              <input
+                type="text"
+                id="custom-prompt-input"
+                class="prompt-custom-input"
+                placeholder="Or type your own scene idea…"
+                maxlength="200"
+              >
+            </div>
+
+            <!-- Tips -->
+            <div class="ai-how-it-works" style="margin-bottom: var(--space-lg);">
+              <h3>A couple of reminders</h3>
+              <ul>
+                <li>Accept whatever the AI says and build on it — even if it goes somewhere weird</li>
+                <li>Make statements, not questions. Give your partner something to react to</li>
+                <li>You don't have to literally say "yes, and" — just keep that spirit going</li>
+                <li>Don't worry about being funny. Just keep the scene moving and see what happens</li>
+              </ul>
+            </div>
+
+            <!-- Who goes first -->
+            <p class="who-starts-label">Who starts the scene?</p>
+            <div class="who-starts-buttons">
+              <button class="who-starts-btn selected" id="btn-i-start" data-value="student">
+                I'll start
+              </button>
+              <button class="who-starts-btn" id="btn-ai-starts" data-value="ai">
+                Let the AI start
+              </button>
+            </div>
+
+            <!-- Start button -->
+            <button class="btn btn-orange btn-lg" id="start-scene-btn" style="width: 100%;">
+              Start a scene
+            </button>
+
+          </div><!-- /ai-setup -->
+
+
+          <!-- ---- CHAT PANEL ---- -->
+          <div class="ai-panel" id="ai-chat" hidden style="padding: 0;">
+
+            <!-- Chat header bar -->
+            <div class="chat-header">
+              <span class="chat-game-title">🎭 Yes, And Scenes</span>
+              <span class="chat-round-counter" id="round-display">Round 1</span>
+            </div>
+
+            <!-- Message list -->
+            <div class="chat-messages" id="chat-messages" aria-live="polite" aria-label="Scene conversation">
+              <!-- Messages injected by JavaScript -->
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-area">
+              <div class="chat-input-row">
+                <textarea
+                  class="chat-input"
+                  id="chat-input"
+                  placeholder="Your line…"
+                  rows="2"
+                  aria-label="Your line in the scene"
+                ></textarea>
+                <button class="chat-send-btn" id="chat-send-btn" aria-label="Send line">
+                  Send →
+                </button>
+              </div>
+              <div class="chat-actions-row">
+                <span style="font-size: 0.72rem; color: rgba(255,255,255,0.3);">Ctrl+Enter to send</span>
+                <button class="end-scene-btn" id="end-scene-btn">End scene</button>
+              </div>
+              <p class="chat-error" id="chat-error" aria-live="assertive"></p>
+            </div>
+
+          </div><!-- /ai-chat -->
+
+
+          <!-- ---- REFLECTION PANEL ---- -->
+          <div class="ai-panel" id="ai-reflect" hidden>
+
+            <h2 class="reflection-heading">How'd that go?</h2>
+
+            <p style="color: rgba(255,255,255,0.65); font-size: 0.875rem; margin-bottom: var(--space-lg);">
+              No grades, no scores. Just a couple of things to think about:
+            </p>
+
+            <ul class="reflection-questions">
+              <li>
+                <span class="reflection-q-marker">→</span>
+                Did you find yourself wanting to block or redirect anything the AI said? What happened if you just went with it anyway?
+              </li>
+              <li>
+                <span class="reflection-q-marker">→</span>
+                Were you making statements and offers, or did you catch yourself asking questions?
+              </li>
+              <li>
+                <span class="reflection-q-marker">→</span>
+                Was there a moment where you stopped thinking and just reacted? What did that feel like?
+              </li>
+            </ul>
+
+            <p class="reflection-coda">
+              Try it again with a different prompt — or try the same prompt but swap who goes first.
+              The scene will go somewhere completely different, and you'll notice things about your
+              own instincts that you didn't the first time.
+            </p>
+
+            <div class="reflection-actions">
+              <button class="btn btn-yellow" id="play-again-btn">Play again</button>
+              <button class="btn btn-teal"   id="try-prompt-btn">Try a different prompt</button>
+              <a href="module3.html" class="btn btn-outline">Continue to Module 3 →</a>
+            </div>
+
+          </div><!-- /ai-reflect -->
+
+        </div><!-- /ai-play-zone -->
+      </section>
+
+    </main><!-- /main-content -->
+  </div><!-- /site-wrapper -->
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/ai-engine.js"></script>
+  <script src="../js/interactions.js"></script>
+
+  <script>
+  /* ============================================================
+     Module 2 — AI Play controller
+     Yes, And Scenes with AI. Free-form — no word tracking needed.
+  ============================================================ */
+  (function () {
+
+    /* --- DOM refs --- */
+    var setupPanel    = document.getElementById('ai-setup');
+    var chatPanel     = document.getElementById('ai-chat');
+    var reflectPanel  = document.getElementById('ai-reflect');
+    var keyOverlay    = document.getElementById('api-key-overlay');
+
+    var promptList    = document.getElementById('prompt-list');
+    var customInput   = document.getElementById('custom-prompt-input');
+    var startBtn      = document.getElementById('start-scene-btn');
+    var btnIStart     = document.getElementById('btn-i-start');
+    var btnAIStarts   = document.getElementById('btn-ai-starts');
+
+    var chatMessages  = document.getElementById('chat-messages');
+    var chatInput     = document.getElementById('chat-input');
+    var sendBtn       = document.getElementById('chat-send-btn');
+    var endSceneBtn   = document.getElementById('end-scene-btn');
+    var roundDisplay  = document.getElementById('round-display');
+    var chatError     = document.getElementById('chat-error');
+
+    var keyInput      = document.getElementById('api-key-input');
+    var keyError      = document.getElementById('api-key-error');
+    var keySubmit     = document.getElementById('api-key-submit');
+
+    var playAgainBtn  = document.getElementById('play-again-btn');
+    var tryPromptBtn  = document.getElementById('try-prompt-btn');
+
+    /* --- State --- */
+    var selectedPrompt = '';
+    var whoStarts      = 'student';
+    var isWaiting      = false;
+
+    /* 20 total exchanges = 10 student turns */
+    var MAX_ROUNDS           = 10;
+    var PROMPT_BTN_THRESHOLD = 3;
+
+
+    /* ============================================================
+       PROMPT SELECTION
+    ============================================================ */
+
+    promptList.querySelectorAll('.prompt-option').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        promptList.querySelectorAll('.prompt-option').forEach(function (b) {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('selected');
+        btn.setAttribute('aria-checked', 'true');
+        selectedPrompt = btn.dataset.prompt;
+        customInput.value = '';
+      });
+    });
+
+    customInput.addEventListener('input', function () {
+      if (customInput.value.trim()) {
+        promptList.querySelectorAll('.prompt-option').forEach(function (b) {
+          b.classList.remove('selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        selectedPrompt = '';
+      }
+    });
+
+
+    /* ============================================================
+       WHO STARTS TOGGLE
+    ============================================================ */
+
+    function selectWhoStarts(value) {
+      whoStarts = value;
+      btnIStart.classList.toggle('selected',   value === 'student');
+      btnAIStarts.classList.toggle('selected', value === 'ai');
+    }
+
+    btnIStart.addEventListener('click',   function () { selectWhoStarts('student'); });
+    btnAIStarts.addEventListener('click', function () { selectWhoStarts('ai'); });
+
+
+    /* ============================================================
+       START SCENE BUTTON
+    ============================================================ */
+
+    startBtn.addEventListener('click', function () {
+      var prompt = customInput.value.trim() || selectedPrompt;
+      if (!prompt) {
+        promptList.style.outline = '2px solid var(--color-orange)';
+        setTimeout(function () { promptList.style.outline = ''; }, 1200);
+        customInput.focus();
+        return;
+      }
+      selectedPrompt = prompt;
+
+      if (!AI_ENGINE.hasKey()) {
+        showKeyOverlay();
+      } else {
+        beginGame();
+      }
+    });
+
+
+    /* ============================================================
+       API KEY OVERLAY
+    ============================================================ */
+
+    function showKeyOverlay() {
+      keyOverlay.hidden = false;
+      keyInput.focus();
+    }
+
+    function hideKeyOverlay() {
+      keyOverlay.hidden = true;
+    }
+
+    keyInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') keySubmit.click();
+    });
+
+    keySubmit.addEventListener('click', function () {
+      var key = keyInput.value.trim();
+      if (!key.startsWith('sk-')) {
+        keyError.textContent = 'That doesn\'t look right. Anthropic API keys start with "sk-".';
+        keyInput.focus();
+        return;
+      }
+      keyError.textContent = '';
+      AI_ENGINE.saveKey(key);
+      hideKeyOverlay();
+      beginGame();
+    });
+
+
+    /* ============================================================
+       GAME FLOW
+    ============================================================ */
+
+    function beginGame() {
+      setupPanel.hidden = true;
+      chatPanel.hidden  = false;
+      chatMessages.innerHTML = '';
+      chatError.textContent  = '';
+      roundDisplay.textContent = 'Round 1';
+      endSceneBtn.classList.remove('prominent');
+
+      AI_ENGINE.startSession('yes-and', onAIMessage, onAIError);
+
+      if (whoStarts === 'ai') {
+        setWaiting(true);
+        addTypingIndicator();
+        AI_ENGINE.aiOpenScene(selectedPrompt);
+      } else {
+        chatInput.focus();
+      }
+    }
+
+    function onAIMessage(text, roundCount) {
+      removeTypingIndicator();
+      setWaiting(false);
+      addMessage('ai', text);
+      updateRoundDisplay(roundCount);
+      chatInput.focus();
+
+      if (roundCount >= MAX_ROUNDS) {
+        setTimeout(endScene, 800);
+      }
+    }
+
+    function onAIError(err) {
+      removeTypingIndicator();
+      setWaiting(false);
+
+      if (err.code === 'INVALID_KEY' || err.message === 'NO_KEY') {
+        AI_ENGINE.clearKey();
+        chatError.textContent = 'API key issue. Please check your key and try again.';
+        setTimeout(function () {
+          chatError.textContent = '';
+          chatPanel.hidden  = true;
+          setupPanel.hidden = false;
+          showKeyOverlay();
+        }, 2000);
+      } else if (err.code === 'RATE_LIMIT') {
+        chatError.textContent = 'Too many requests — wait a moment and try again.';
+        setTimeout(function () { chatError.textContent = ''; }, 4000);
+      } else {
+        chatError.textContent = 'Something went wrong. Try sending your line again.';
+        setTimeout(function () { chatError.textContent = ''; }, 4000);
+      }
+    }
+
+
+    /* ============================================================
+       SENDING MESSAGES
+    ============================================================ */
+
+    function sendLine() {
+      var text = chatInput.value.trim();
+      if (!text || isWaiting) return;
+
+      chatInput.value = '';
+      addMessage('user', text);
+      setWaiting(true);
+      addTypingIndicator();
+
+      AI_ENGINE.sendMessage(text);
+    }
+
+    sendBtn.addEventListener('click', sendLine);
+
+    chatInput.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        sendLine();
+      }
+    });
+
+    endSceneBtn.addEventListener('click', endScene);
+
+
+    /* ============================================================
+       SCENE END + REFLECTION
+    ============================================================ */
+
+    function endScene() {
+      AI_ENGINE.endSession();
+      chatPanel.hidden    = true;
+      reflectPanel.hidden = false;
+    }
+
+    playAgainBtn.addEventListener('click', resetToSetup);
+    tryPromptBtn.addEventListener('click', function () {
+      resetToSetup();
+      setTimeout(function () {
+        promptList.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+
+    function resetToSetup() {
+      reflectPanel.hidden = true;
+      chatPanel.hidden    = true;
+      setupPanel.hidden   = false;
+      promptList.querySelectorAll('.prompt-option').forEach(function (b) {
+        b.classList.remove('selected');
+        b.setAttribute('aria-checked', 'false');
+      });
+      customInput.value = '';
+      selectedPrompt    = '';
+    }
+
+
+    /* ============================================================
+       CHAT UI HELPERS
+    ============================================================ */
+
+    function addMessage(role, text) {
+      var row = document.createElement('div');
+      row.className = 'chat-message chat-message-' + role;
+
+      if (role === 'ai') {
+        var avatar = document.createElement('div');
+        avatar.className = 'chat-avatar';
+        avatar.setAttribute('aria-hidden', 'true');
+        avatar.textContent = '🎭';
+        row.appendChild(avatar);
+      }
+
+      var bubble = document.createElement('div');
+      bubble.className = 'chat-bubble';
+      /* Use markdown renderer for AI messages so bold/bullets display correctly */
+      if (role === 'ai' && window.formatChatText) {
+        bubble.innerHTML = window.formatChatText(text);
+      } else {
+        bubble.textContent = text;
+      }
+      row.appendChild(bubble);
+
+      chatMessages.appendChild(row);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addTypingIndicator() {
+      var row = document.createElement('div');
+      row.className = 'chat-message chat-message-ai';
+      row.id = 'typing-row';
+
+      var avatar = document.createElement('div');
+      avatar.className = 'chat-avatar';
+      avatar.setAttribute('aria-hidden', 'true');
+      avatar.textContent = '🎭';
+
+      var indicator = document.createElement('div');
+      indicator.className = 'typing-indicator';
+      indicator.setAttribute('aria-label', 'AI is thinking');
+      indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+      row.appendChild(avatar);
+      row.appendChild(indicator);
+      chatMessages.appendChild(row);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      var row = document.getElementById('typing-row');
+      if (row) row.remove();
+    }
+
+    function setWaiting(waiting) {
+      isWaiting = waiting;
+      chatInput.disabled = waiting;
+      sendBtn.disabled   = waiting;
+    }
+
+    function updateRoundDisplay(roundCount) {
+      roundDisplay.textContent = 'Round ' + roundCount;
+      if (roundCount >= PROMPT_BTN_THRESHOLD) {
+        endSceneBtn.classList.add('prominent');
+      }
+    }
+
+
+    /* ============================================================
+       MODULE TAB HIGHLIGHTING
+    ============================================================ */
+
+    var sections = document.querySelectorAll('.module-section');
+    var tabs     = document.querySelectorAll('.module-tab');
+
+    function updateActiveTabs() {
+      var scrollPos = window.scrollY + 80;
+      sections.forEach(function (sec) {
+        if (sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          var match = document.querySelector('.module-tab[href="#' + sec.id + '"]');
+          if (match) match.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveTabs, { passive: true });
+    updateActiveTabs();
+
+  })();
+  </script>
+
+</body>
+</html>
