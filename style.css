@@ -496,6 +496,10 @@ p:last-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;   /* Center content horizontally */
+  text-align: center;
+  border-radius: var(--radius-lg);
+  margin: var(--space-lg);
 }
 
 .hero-eyebrow {
@@ -528,6 +532,7 @@ p:last-child {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* --- Content sections (shared padding/max-width) --- */
@@ -753,6 +758,8 @@ p:last-child {
   .hero {
     padding: 64px var(--space-lg) var(--space-xl);
     min-height: auto;
+    margin: var(--space-md);
+    border-radius: var(--radius-md);
   }
 
   .hero-title {
@@ -761,7 +768,7 @@ p:last-child {
 
   .hero-buttons {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   /* Content sections less padding */
