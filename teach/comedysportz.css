@@ -1,0 +1,416 @@
+/* ============================================================
+   comedysportz.css
+   Styles for the Comedy Sportz page (teach/comedysportz.html).
+============================================================ */
+
+
+/* ---- Hero ---- */
+
+.cs-hero {
+  background: linear-gradient(135deg, #1B1B2F 0%, #252545 100%);
+  padding: var(--space-2xl) var(--space-xl);
+  color: var(--color-white);
+  border-bottom: 4px solid var(--color-yellow);
+}
+
+.cs-hero h1 {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: var(--color-yellow);
+  margin: var(--space-sm) 0;
+  line-height: 1.2;
+}
+
+.cs-hero-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 520px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* ---- Body ---- */
+
+.cs-body {
+  padding: var(--space-xl);
+  max-width: 860px;
+}
+
+
+/* ---- Intro text ---- */
+
+.cs-intro p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-md);
+}
+
+.cs-match-overview {
+  background: #f7f8fc;
+  border-left: 4px solid var(--color-teal);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.cs-match-overview h2 {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-teal);
+  margin-bottom: var(--space-md);
+}
+
+.cs-overview-list {
+  padding-left: var(--space-xl);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-dark-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.cs-match-overview > p {
+  font-size: 0.875rem;
+  color: var(--color-gray-text);
+  margin: 0;
+}
+
+.cs-ref-note {
+  background: #fffde6;
+  border: 1px solid #e8d800;
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-dark-text);
+  margin: var(--space-lg) 0;
+}
+
+.cs-sessions-intro {
+  font-size: 0.95rem;
+  color: var(--color-gray-text);
+  margin-bottom: var(--space-xl);
+}
+
+
+/* ---- Session cards ---- */
+
+.cs-sessions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cs-session-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* The clickable trigger row */
+.cs-session-trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-white);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.cs-session-trigger:hover {
+  background: #f8f8fc;
+}
+
+.cs-session-trigger[aria-expanded="true"] {
+  background: #f8f8fc;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-session-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-session-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-teal);
+}
+
+.cs-session-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--color-dark-text);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.cs-session-desc {
+  font-size: 0.875rem;
+  color: var(--color-gray-text);
+  line-height: 1.5;
+  margin: var(--space-xs) 0 0;
+}
+
+.cs-session-meta {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-sm);
+  font-size: 0.8rem;
+  color: var(--color-gray-text);
+  font-weight: 500;
+}
+
+.cs-expand-icon {
+  font-size: 0.65rem;
+  color: var(--color-gray-text);
+  padding-top: 4px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cs-session-trigger[aria-expanded="true"] .cs-expand-icon {
+  transform: rotate(180deg);
+}
+
+
+/* ---- Expanded session body ---- */
+
+.cs-session-body {
+  padding: var(--space-lg);
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.cs-session-body[hidden] {
+  display: none;
+}
+
+
+/* ---- Half sections ---- */
+
+.cs-half {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cs-half-heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray-text);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-border);
+  margin: 0;
+}
+
+
+/* ---- Individual game blocks ---- */
+
+.cs-game {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-teal);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.cs-game-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.cs-game-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-teal);
+  background: #e8f9fc;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.cs-game-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-dark-text);
+}
+
+.cs-game-time {
+  font-size: 0.75rem;
+  color: var(--color-gray-text);
+  margin-left: auto;
+}
+
+.cs-game p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-dark-text);
+  margin: 0;
+}
+
+.cs-game-setup {
+  font-style: italic;
+  color: var(--color-gray-text) !important;
+  background: #f7f7fb;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+}
+
+
+/* ---- Sample lists ---- */
+
+.cs-samples {
+  font-size: 0.85rem;
+  color: var(--color-gray-text);
+}
+
+.cs-samples-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cs-samples ul {
+  list-style: disc;
+  padding-left: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+}
+
+.cs-samples li {
+  line-height: 1.5;
+}
+
+
+/* ---- Tips callout ---- */
+
+.cs-tip {
+  background: #fff8e1;
+  border-left: 3px solid var(--color-yellow);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--color-dark-text);
+}
+
+
+/* ---- Audience vote ---- */
+
+.cs-audience-vote {
+  background: #e8f4e8;
+  border: 1px solid #b8ddb8;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--color-dark-text);
+  text-align: center;
+}
+
+
+/* ---- Winner banner ---- */
+
+.cs-winner {
+  background: linear-gradient(135deg, #1B1B2F 0%, #252545 100%);
+  color: var(--color-yellow);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+
+/* ---- Tips section ---- */
+
+.cs-tips {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.cs-tips h3 {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-gray-text);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.cs-tips ul {
+  list-style: disc;
+  padding-left: var(--space-xl);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-dark-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+}
+
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .cs-hero {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .cs-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .cs-body {
+    padding: var(--space-lg);
+  }
+
+  .cs-session-trigger {
+    padding: var(--space-md);
+  }
+
+  .cs-session-body {
+    padding: var(--space-md);
+  }
+
+  .cs-game-time {
+    margin-left: 0;
+  }
+}

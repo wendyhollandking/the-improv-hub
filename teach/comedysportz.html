@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comedy Sportz — The Improv Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="comedysportz.css">
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR
+    ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">Main</div>
+          <a href="../index.html" class="nav-link">Home</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Learn</div>
+          <a href="../modules/module1.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-1-color);" aria-hidden="true"></span>1. Getting silly</a>
+          <a href="../modules/module2.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-2-color);" aria-hidden="true"></span>2. Yes, and</a>
+          <a href="../modules/module3.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-3-color);" aria-hidden="true"></span>3. Characters</a>
+          <a href="../modules/module4.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-4-color);" aria-hidden="true"></span>4. Scenes</a>
+          <a href="../modules/module5.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-5-color);" aria-hidden="true"></span>5. Comedy patterns</a>
+          <a href="../modules/module6.html" class="nav-link"><span class="module-dot" style="background-color: var(--module-6-color);" aria-hidden="true"></span>6. Sketch comedy</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Play</div>
+          <a href="../games/library.html" class="nav-link">🎮 Games library</a>
+          <a href="../play/ai-play.html?random=1" class="nav-link">🎲 Random game</a>
+          <a href="../play/ai-play.html" class="nav-link">🤖 Play with AI</a>
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-label">Teach</div>
+          <a href="../teach/lesson-generator.html" class="nav-link">📝 Lesson generator</a>
+          <a href="../teach/comedysportz.html" class="nav-link">🏆 Comedy Sportz</a>
+          <a href="../videos/library.html" class="nav-link">🎬 Video library</a>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <a href="../reference.html" class="nav-link">📋 Quick reference</a>
+      </div>
+    </nav>
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main class="main-content" id="main-content">
+
+      <!-- Hero -->
+      <header class="cs-hero" aria-labelledby="cs-title">
+        <p class="hero-eyebrow">Competitive improv</p>
+        <h1 id="cs-title">🏆 Comedy Sportz</h1>
+        <p class="cs-hero-subtitle">
+          Two teams. One ref. Everything made up on the spot.
+          Run your own match with these ready-to-go templates.
+        </p>
+      </header>
+
+      <!-- Intro -->
+      <section class="cs-body">
+
+        <div class="cs-intro">
+          <p>
+            ComedySportz is competitive improv comedy. Two teams face off in front of a live audience,
+            playing improv games head-to-head, and the audience votes on who's funnier. There's a
+            referee who runs the show, explains the rules, and keeps score. It's structured like a
+            sporting event — but everything on stage is made up on the spot.
+          </p>
+          <p>
+            ComedySportz was founded in Milwaukee in 1984 and has since expanded to cities across the
+            United States and Europe. Many locations run high school leagues where students form their
+            own teams, get trained by professional improvisers, and compete against other schools.
+            If you've been working through the modules and games on this site, you already know a lot
+            of the games that ComedySportz teams play.
+          </p>
+
+          <div class="cs-match-overview">
+            <h2>How a match works</h2>
+            <ol class="cs-overview-list">
+              <li><strong>Captains' game</strong> — Each team picks a captain. The ref calls them out and they play a quick 1–2 minute game. The winner picks the first full-team game.</li>
+              <li><strong>Head-to-head game</strong> — Both teams play an improv game together. The winning team gets 5 points.</li>
+              <li><strong>Team game (Team A)</strong> — One team performs a 5-minute game on their own.</li>
+              <li><strong>Team game (Team B)</strong> — The other team does the same.</li>
+              <li><strong>Audience vote</strong> — The ref asks the audience to applaud for each team. Louder applause wins 5 points.</li>
+              <li><strong>Closing head-to-head</strong> — The half ends with one more game where both teams compete directly.</li>
+            </ol>
+            <p>The second half mirrors the first. At the end, the team with the most points wins.</p>
+          </div>
+
+          <div class="cs-ref-note">
+            <strong>The ref</strong> is the host of the whole show — explaining every game, collecting
+            suggestions, keeping score, and keeping the energy up. A good ref is just as entertaining
+            as the performers. It's a great role for someone who's comfortable talking to a crowd but
+            doesn't want to perform improv on stage.
+          </div>
+
+          <p class="cs-sessions-intro">
+            Below are two complete match templates you can use. Each one is ready to go — just pick
+            your teams, assign a ref, and follow the plan.
+          </p>
+        </div>
+
+        <!-- ======================================================
+             SESSION CARDS
+        ====================================================== -->
+        <div class="cs-sessions">
+
+          <!-- ---- Session 1: The Classic ---- -->
+          <div class="cs-session-card" id="cs-card-1">
+            <button
+              class="accordion-trigger cs-session-trigger"
+              aria-expanded="false"
+              aria-controls="cs-session-1-body"
+            >
+              <div class="cs-session-preview">
+                <span class="cs-session-label">Sample Match 1</span>
+                <h2 class="cs-session-title">The Classic</h2>
+                <p class="cs-session-desc">Best for groups still getting comfortable with improv. High-energy games with clear structures.</p>
+                <div class="cs-session-meta">
+                  <span>👥 Two teams of 3–5 players + ref</span>
+                  <span>⏱ 45–60 min</span>
+                </div>
+              </div>
+              <span class="cs-expand-icon" aria-hidden="true">▼</span>
+            </button>
+
+            <div id="cs-session-1-body" class="cs-session-body" hidden>
+
+              <!-- First Half -->
+              <div class="cs-half">
+                <h3 class="cs-half-heading">First Half</h3>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Captains' Game</span>
+                    <span class="cs-game-name">Five Things</span>
+                    <span class="cs-game-time">~2 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Captains to the playing field! We're going to start with Five Things. I'm going to give each captain a category, and they have to name five things in that category as fast as they can. The audience counts along. Whoever finishes faster and with more confidence wins, and their team picks the first game."</p>
+                  <p><strong>How it works:</strong> The ref gives Captain A a category. The captain rattles off five things as fast as possible while the audience counts. Then Captain B gets a different category. The ref (with audience input) decides who did it better. That captain's team picks the first head-to-head game.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample categories:</span>
+                    <ul>
+                      <li>Five things you'd find in a wizard's pocket</li>
+                      <li>Five terrible excuses for being late</li>
+                      <li>Five rejected ice cream flavors</li>
+                      <li>Five things a penguin would put on a dating profile</li>
+                      <li>Five sounds you hear at a zoo at midnight</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Head-to-Head</span>
+                    <span class="cs-game-name">What Are You Doing?</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Both teams, line up on opposite sides. We're playing What Are You Doing. One person starts miming an action. The next person asks 'what are you doing?' and the first person says something completely different from what they're actually miming. If you hesitate too long or repeat something, you're out. Last team with players standing wins."</p>
+                  <p><strong>How it works:</strong> Teams alternate sending players in. Player A mimes something (e.g., brushing teeth). Player B asks "What are you doing?" Player A says something completely different. Player B now mimes that thing. If someone hesitates, repeats an action, or describes what they're actually doing, they're out. The team with the last player standing wins 5 points.</p>
+                  <div class="cs-tip">Keep the pace fast. If someone takes more than 3 seconds, buzz them out. Encourage big physical movements — they're funnier and easier for the audience to see.</div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team A</span>
+                    <span class="cs-game-name">Good / Bad / Worse</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Okay Team A, you're up! We need three players: one giving Good Advice, one giving Bad Advice, and one giving Worse Advice. Audience, you're going to ask them for advice on anything you want."</p>
+                  <p><strong>How it works:</strong> Three players sit facing the audience. Audience members ask for advice on any topic. Good Advice goes first with genuinely decent advice. Bad Advice follows with notably poor advice. Worse Advice finishes with spectacularly terrible advice. Go through 4–5 questions.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample questions (if the audience is shy):</span>
+                    <ul>
+                      <li>How do I get my parents to extend my curfew?</li>
+                      <li>How should I study for a test I forgot about?</li>
+                      <li>What's the best way to ask someone to a dance?</li>
+                      <li>How do I convince my teacher I need an extension?</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team B</span>
+                    <span class="cs-game-name">New Choice</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team B, your turn! I need two players for a scene. At any point during the scene, I'll yell 'New choice!' and whoever just spoke has to replace their last line with something completely different. I might say it more than once in a row."</p>
+                  <p><strong>How it works:</strong> Two players start a scene based on an audience suggestion. The ref yells "New choice!" at key moments and the last person who spoke immediately replaces their line. The scene continues from whatever the last accepted line was.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample scene suggestions:</span>
+                    <ul>
+                      <li>At a pet store</li>
+                      <li>In detention</li>
+                      <li>At a restaurant on the moon</li>
+                      <li>At a job interview for a very unusual job</li>
+                    </ul>
+                  </div>
+                  <div class="cs-tip">Don't call "New choice!" on every line. Let the scene build, then strike. Hitting it three or four times in a row on the same person is where the biggest laughs come from.</div>
+                </div>
+
+                <div class="cs-audience-vote">
+                  <strong>Audience Vote</strong> — The ref asks the audience to applaud for each team. Louder applause wins 5 points.
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Closing Head-to-Head</span>
+                    <span class="cs-game-name">World's Worst</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Both teams, line up! We're closing the half with World's Worst. I'm going to give you a category: 'World's Worst blank.' Teams take turns stepping forward with their best worst example. One line each, then step back."</p>
+                  <p><strong>How it works:</strong> Teams alternate with quick one-liners or physical bits. After 5–6 rounds, the ref picks a new category. Go through 2–3 categories. The ref (with audience input) picks the team that got the most laughs.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample categories:</span>
+                    <ul>
+                      <li>World's worst babysitter</li>
+                      <li>World's worst superhero</li>
+                      <li>World's worst motivational speaker</li>
+                      <li>World's worst school principal</li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!-- /first half -->
+
+              <!-- Second Half -->
+              <div class="cs-half">
+                <h3 class="cs-half-heading">Second Half</h3>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Captains' Game</span>
+                    <span class="cs-game-name">Zip Zap Zop Showdown</span>
+                    <span class="cs-game-time">~2 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Captains back to the playing field! We're doing a speed round of Zip Zap Zop. Both captains face each other and send Zip Zap Zop back and forth as fast as possible. First person to mess up loses, and the other captain's team picks the next game."</p>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Head-to-Head</span>
+                    <span class="cs-game-name">Freeze Tag</span>
+                    <span class="cs-game-time">5–7 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "We need one player from each team to start a scene. At any point, anyone from either team can yell 'Freeze!' Both players freeze. The person who called freeze taps one player out, takes their exact position, and starts a completely new scene. Teams alternate freezing in."</p>
+                  <p><strong>How it works:</strong> Players from both teams can call "Freeze!" and tag in. Teams should alternate so both get equal stage time. Each new player uses the frozen physical position to inspire a new scene.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample opening suggestions:</span>
+                    <ul>
+                      <li>A kitchen</li>
+                      <li>A construction site</li>
+                      <li>A spaceship</li>
+                      <li>An amusement park</li>
+                    </ul>
+                  </div>
+                  <div class="cs-tip">If one team is dominating the freezes, prompt the other: "Blue team, we haven't heard from you in a while!"</div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team B</span>
+                    <span class="cs-game-name">Fortunately / Unfortunately</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team B, I need your whole team. We're going to build a story. I'll get a setup from the audience. Going down the line, each player alternates between 'Fortunately…' and 'Unfortunately…' Keep the story connected and keep escalating!"</p>
+                  <p><strong>How it works:</strong> Players go down the line alternating Fortunately and Unfortunately. Each line connects to the previous one and raises the stakes. Go through the line 2–3 times.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample setups:</span>
+                    <ul>
+                      <li>"A student was about to give the most important presentation of their life."</li>
+                      <li>"A family road trip took a very wrong turn."</li>
+                      <li>"The school cafeteria started serving a brand new, never-before-tasted food."</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team A</span>
+                    <span class="cs-game-name">Experts Panel</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team A, I need three or four of you to sit as our panel of experts. Audience, give me a topic that these experts are the world's leading authorities on. The weirder the topic, the better."</p>
+                  <p><strong>How it works:</strong> 3–4 players sit as the panel, each giving themselves a name and title on the spot. The ref moderates and can take audience questions. Experts answer with complete confidence and build on each other's claims.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample topics:</span>
+                    <ul>
+                      <li>The secret language of cafeteria food</li>
+                      <li>Why cats stare at walls</li>
+                      <li>Advanced strategies for avoiding homework</li>
+                      <li>The hidden ecosystem inside a school locker</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-audience-vote">
+                  <strong>Audience Vote</strong> — Applause vote. 5 points to the louder team.
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Closing Head-to-Head</span>
+                    <span class="cs-game-name">Scenes from a Hat</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Before this half, we collected scene suggestions from you on slips of paper. I'm going to read them out, and players from both teams jump up and act them out. Quick hits — one line, one bit, then sit down. Both teams can go on the same suggestion."</p>
+                  <p><strong>How it works:</strong> Rapid-fire responses to each prompt. No full scenes, just quick hits. The ref keeps pulling suggestions until time runs out.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample prompts (have these ready as backup):</span>
+                    <ul>
+                      <li>Things you shouldn't say on a roller coaster</li>
+                      <li>Rejected school mascots</li>
+                      <li>Things a pet would say if it could talk for 10 seconds</li>
+                      <li>Things overheard at a superhero support group</li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!-- /second half -->
+
+              <div class="cs-winner">🏆 Add up the points. The ref announces the winning team with as much fanfare as possible.</div>
+
+            </div><!-- /session-1-body -->
+          </div><!-- /cs-card-1 -->
+
+
+          <!-- ---- Session 2: The Advanced Show ---- -->
+          <div class="cs-session-card" id="cs-card-2">
+            <button
+              class="accordion-trigger cs-session-trigger"
+              aria-expanded="false"
+              aria-controls="cs-session-2-body"
+            >
+              <div class="cs-session-preview">
+                <span class="cs-session-label">Sample Match 2</span>
+                <h2 class="cs-session-title">The Advanced Show</h2>
+                <p class="cs-session-desc">Best for groups with some improv experience. Uses more complex games that require stronger listening and character skills.</p>
+                <div class="cs-session-meta">
+                  <span>👥 Two teams of 3–5 players + ref</span>
+                  <span>⏱ 45–60 min</span>
+                </div>
+              </div>
+              <span class="cs-expand-icon" aria-hidden="true">▼</span>
+            </button>
+
+            <div id="cs-session-2-body" class="cs-session-body" hidden>
+
+              <!-- First Half -->
+              <div class="cs-half">
+                <h3 class="cs-half-heading">First Half</h3>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Captains' Game</span>
+                    <span class="cs-game-name">ABC Challenge</span>
+                    <span class="cs-game-time">~2 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Captains to the playing field! You're going to do a scene together, but each line has to start with the next letter of the alphabet. Captain A starts with A, Captain B says a line starting with B, and so on. First person to use the wrong letter or freeze up loses. Audience, give me a location!"</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample locations:</span>
+                    <ul>
+                      <li>A grocery store</li>
+                      <li>A pirate ship</li>
+                      <li>A dentist's office</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Head-to-Head</span>
+                    <span class="cs-game-name">Half-Life</span>
+                    <span class="cs-game-time">~8 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "I need two players from each team. You're going to do a scene for about two minutes. Then I'll say 'Half-life!' and you replay the exact same scene in one minute. Then 30 seconds. Then 15. Then as fast as you possibly can. Team A goes first, then Team B does the same. Audience, you'll vote on who did it better."</p>
+                  <p><strong>How it works:</strong> Team A performs a 2-minute scene, then replays it at half-life intervals. Team B does the same with a different suggestion. The audience votes on which team's half-life was funnier.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample scene suggestions:</span>
+                    <ul>
+                      <li>A surprise birthday party that goes wrong</li>
+                      <li>Two people assembling furniture</li>
+                      <li>A student presenting a book report on a book they clearly didn't read</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team A</span>
+                    <span class="cs-game-name">Story Director</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team A, I need all of you on stage and one person to be the Director. The Director narrates a scene and throws curveballs — fast-forward ten years, change the genre, add new characters, or reverse the whole thing. Audience, give us a title for a movie that doesn't exist."</p>
+                  <p><strong>How it works:</strong> One player directs, the rest perform. The Director can interrupt with commands: "Fast forward!" "Now it's a horror movie!" "Rewind!" "Slow motion!" Performers adapt instantly.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample movie titles:</span>
+                    <ul>
+                      <li>"The Last Lunchroom"</li>
+                      <li>"My Teacher Is a Werewolf (And Not a Good One)"</li>
+                      <li>"The Day the Wi-Fi Died"</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team B</span>
+                    <span class="cs-game-name">Dubbing</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team B, I need four of you. Two are going to do a scene physically — moving your mouths but making no sound. The other two stand off to the side and provide all the dialogue. Audience, where does this scene take place?"</p>
+                  <p><strong>How it works:</strong> Two players are the Bodies (silent, physical acting). Two players are the Voices (they watch and provide all dialogue). The Bodies should exaggerate movements. The Voices try to match timing and energy. The disconnect between bodies and voices is where the comedy lives.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample locations:</span>
+                    <ul>
+                      <li>A cooking show</li>
+                      <li>A courtroom</li>
+                      <li>A real estate showing of a haunted house</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-audience-vote">
+                  <strong>Audience Vote</strong> — 5 points to the louder applause.
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Closing Head-to-Head</span>
+                    <span class="cs-game-name">Slogans</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Both teams, line up! I'm going to give you a product and you're going to pitch advertising slogans for it. Teams alternate — step forward, deliver your slogan, step back. Confidence counts!"</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample products:</span>
+                    <ul>
+                      <li>A pillow that records your dreams</li>
+                      <li>Shoes made out of bread</li>
+                      <li>An alarm clock that insults you</li>
+                      <li>Glow-in-the-dark socks</li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!-- /first half -->
+
+              <!-- Second Half -->
+              <div class="cs-half">
+                <h3 class="cs-half-heading">Second Half</h3>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Captains' Game</span>
+                    <span class="cs-game-name">Questions Only</span>
+                    <span class="cs-game-time">~2 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Captains, you're going to do a scene, but every single line has to be a question. If you make a statement, you lose. Audience, give me a location!"</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample locations:</span>
+                    <ul>
+                      <li>On an airplane</li>
+                      <li>At a school dance</li>
+                      <li>In a haunted house</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Head-to-Head</span>
+                    <span class="cs-game-name">Columns</span>
+                    <span class="cs-game-time">~7 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "We're going to run two scenes at the same time, but we'll only watch one at a time. I need two players from each team. When I point to your scene, you're live. When I switch, you freeze. When I come back, pick up right where you left off."</p>
+                  <p><strong>How it works:</strong> Each team gets an audience suggestion. The ref switches between scenes every 30–60 seconds. Each scene picks up exactly where it left off. If themes start to echo between scenes, players should lean into it.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample suggestion pairs:</span>
+                    <ul>
+                      <li>Scene 1: A kitchen / Scene 2: A spaceship</li>
+                      <li>Scene 1: A first date / Scene 2: A job interview</li>
+                      <li>Scene 1: Planning a party / Scene 2: Planning a heist</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team B</span>
+                    <span class="cs-game-name">Character Interview</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team B, I need one interviewer and one character. The character is a guest on a talk show, and the audience will decide who they are. Character, cover your ears! Audience, who is this person and what are they famous for?"</p>
+                  <p><strong>How it works:</strong> The audience secretly decides the character's identity. The interviewer asks questions that subtly hint at who the character is. The character answers in whatever way feels right, gradually piecing together who they are. When the character guesses correctly, the round ends.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample characters:</span>
+                    <ul>
+                      <li>Someone who invented edible furniture</li>
+                      <li>The world's worst magician who accidentally makes real things disappear</li>
+                      <li>Someone who just discovered they're actually a robot</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Team Game — Team A</span>
+                    <span class="cs-game-name">Pop-Up Storybook</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Team A, I need one narrator and everyone else on stage as performers. The narrator tells a story, and the performers physically become everything described — characters, animals, furniture, weather. Audience, give me a title for a children's book that doesn't exist."</p>
+                  <p><strong>How it works:</strong> One player narrates while all others physically represent everything mentioned. Performers jump in quickly without being assigned. The narrator should notice what performers are doing and build on it.</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample book titles:</span>
+                    <ul>
+                      <li>"The Dragon Who Was Afraid of Everything"</li>
+                      <li>"A Family of Raccoons Move Into the School"</li>
+                      <li>"The Monster Under the Bed Gets a Roommate"</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="cs-audience-vote">
+                  <strong>Audience Vote</strong> — 5 points to the louder applause.
+                </div>
+
+                <div class="cs-game">
+                  <div class="cs-game-header">
+                    <span class="cs-game-type">Closing Head-to-Head</span>
+                    <span class="cs-game-name">Irish Drinking Song</span>
+                    <span class="cs-game-time">~5 min</span>
+                  </div>
+                  <p class="cs-game-setup"><strong>How the ref sets it up:</strong> "Both teams, line up side by side! We're closing the show with a song. I need a topic from the audience. Each person sings one line going down the line. The fourth person in each group has to land a rhyme. After each verse, everyone sings the chorus together. Don't worry about sounding good. Worry about committing!"</p>
+                  <div class="cs-samples">
+                    <span class="cs-samples-label">Sample topics:</span>
+                    <ul>
+                      <li>Failing your driver's test</li>
+                      <li>Your phone dying at the worst moment</li>
+                      <li>Accidentally sending a text to the wrong person</li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!-- /second half -->
+
+              <div class="cs-winner">🏆 The ref tallies the points and announces the champion with maximum energy. Both teams take a bow. Remind the audience that everyone was making it up the whole time.</div>
+
+              <!-- Tips -->
+              <div class="cs-tips">
+                <h3>Tips for running a great match</h3>
+                <ul>
+                  <li><strong>The ref makes or breaks it.</strong> Pick someone comfortable talking to a crowd who can explain games clearly and keep energy up between games.</li>
+                  <li><strong>Collect audience suggestions early.</strong> Have slips of paper ready before the show starts so you always have a backup.</li>
+                  <li><strong>Keep it moving.</strong> Dead air is the enemy. If a game stalls, the ref should jump in and move things along.</li>
+                  <li><strong>Celebrate everything.</strong> Even if a game doesn't go great, keep the energy positive.</li>
+                  <li><strong>Keep it clean.</strong> ComedySportz is family-friendly. If someone goes off-color, the ref can call a "brown bag foul" — an actual ComedySportz tradition where the offending player wears a brown paper bag on their head.</li>
+                  <li><strong>Have fun.</strong> The audience can tell when performers are enjoying themselves. If the teams are laughing, the audience will be too.</li>
+                </ul>
+              </div>
+
+            </div><!-- /session-2-body -->
+          </div><!-- /cs-card-2 -->
+
+        </div><!-- /cs-sessions -->
+      </section><!-- /cs-body -->
+
+    </main>
+  </div><!-- /site-wrapper -->
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/interactions.js"></script>
+
+</body>
+</html>
