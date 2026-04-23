@@ -36,7 +36,7 @@
   };
 
   /* Build a single game card element.
-     Cards show title, description, category tags, AI badge, and inline rules. */
+     Cards show title, description, category tags, and inline rules. */
   function buildCard(game) {
     var article = document.createElement('article');
     article.className = 'card game-card game-card-library';
@@ -48,18 +48,12 @@
       return '<span class="tag tag-' + cat + '">' + label + '</span>';
     }).join('');
 
-    /* ---- AI badge (absolute-positioned, top-right) ---- */
-    var aiBadgeHtml = game.aiPlayable
-      ? '<span class="ai-badge">✨ Play with AI</span>'
-      : '';
-
     /* ---- Inline rules for the quick-expand toggle ---- */
     var rulesHtml = game.rules.map(function (rule) {
       return '<li>' + rule + '</li>';
     }).join('');
 
     article.innerHTML =
-      aiBadgeHtml +
       '<div class="game-card-body">' +
         '<h3 class="game-card-title">' + game.title + '</h3>' +
         '<p class="game-card-desc">' + game.description + '</p>' +
