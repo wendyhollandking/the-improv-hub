@@ -3,6 +3,7 @@
    Reusable interactive UI components used across module pages:
    - Accordion (expandable/collapsible content sections)
    - Tabs (horizontal tab panels)
+   - Voice input (mic button using Web Speech API)
 
    Each component is initialized by looking for its root element
    in the DOM. Components are self-contained and don't depend on
@@ -180,3 +181,78 @@ window.formatChatText = function (text) {
   closeList();
   return html.join('');
 };
+
+
+/* ============================================================
+   VOICE INPUT
+   Uses the Web Speech API, which is built into Chrome and Safari
+   (the target browsers for this site). Finds #mic-btn and
+   #chat-input on the page; does nothing if either is absent.
+   Hides the button automatically on browsers that don't support
+   speech recognition so the layout still works.
+============================================================ */
+(function () {
+  var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var micBtn    = document.getElementById('mic-btn');
+  var chatInput = document.getElementById('chat-input');
+
+  /* Nothing to wire up on pages without the chat UI */
+  if (!micBtn || !chatInput) return;
+
+  /* Hide the mic button gracefully if the browser doesn't support speech */
+  if (!SpeechRecognition) {
+    micBtn.hidden = true;
+    return;
+  }
+
+  var recognition      = new SpeechRecognition();
+  recognition.continuous     = false;  /* stop after the first natural pause */
+  recognition.interimResults = false;  /* only return the final transcript */
+  recognition.lang           = 'en-US';
+
+  var isListening = false;
+
+  function startListening() {
+    try {
+      recognition.start();
+      isListening = true;
+      micBtn.classList.add('listening');
+      micBtn.setAttribute('aria-label', 'Stop listening');
+      micBtn.setAttribute('title',      'Stop listening');
+    } catch (e) {
+      /* recognition.start() throws if already running — ignore it */
+    }
+  }
+
+  micBtn.addEventListener('click', function () {
+    if (isListening) {
+      recognition.stop();
+    } else {
+      startListening();
+    }
+  });
+
+  /* Put the transcript into the textarea and let the student review before sending */
+  recognition.onresult = function (event) {
+    var transcript = event.results[0][0].transcript.trim();
+    chatInput.value = transcript;
+    chatInput.focus();
+    /* Fire the input event so any character-counter listeners pick it up */
+    chatInput.dispatchEvent(new Event('input'));
+  };
+
+  recognition.onend = function () {
+    isListening = false;
+    micBtn.classList.remove('listening');
+    micBtn.setAttribute('aria-label', 'Speak your line');
+    micBtn.setAttribute('title',      'Speak your line');
+  };
+
+  recognition.onerror = function (event) {
+    isListening = false;
+    micBtn.classList.remove('listening');
+    micBtn.setAttribute('aria-label', 'Speak your line');
+    micBtn.setAttribute('title',      'Speak your line');
+    /* 'no-speech' and 'aborted' are normal — not worth surfacing as errors */
+  };
+})();

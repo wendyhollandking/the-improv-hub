@@ -697,6 +697,44 @@
 .chat-send-btn:hover    { opacity: 0.85; }
 .chat-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
+/* Mic button — sits between the textarea and the Send button */
+.chat-mic-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  align-self: flex-end;
+  margin-bottom: 2px;
+}
+
+.chat-mic-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Pulsing red ring while the browser is listening */
+.chat-mic-btn.listening {
+  background: rgba(209, 32, 82, 0.2);
+  border-color: rgba(209, 32, 82, 0.7);
+  color: #ff4d7e;
+  animation: mic-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(209, 32, 82, 0.35); }
+  50%       { box-shadow: 0 0 0 7px rgba(209, 32, 82, 0); }
+}
+
 .chat-actions-row {
   display: flex;
   justify-content: flex-end;
