@@ -66,32 +66,6 @@
         </p>
       </header>
 
-      <!-- API key overlay -->
-      <div class="api-key-overlay" id="api-key-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="key-dialog-heading">
-        <div class="api-key-box">
-          <h3 id="key-dialog-heading">One quick thing</h3>
-          <p>
-            The lesson generator uses the Anthropic API. You'll need an API key —
-            get yours at console.anthropic.com.
-            <br><br>
-            Your key is only saved for this browser session and never sent anywhere
-            except directly to Anthropic.
-          </p>
-          <input
-            type="password"
-            id="api-key-input"
-            class="api-key-input"
-            placeholder="sk-ant-…"
-            autocomplete="off"
-            spellcheck="false"
-          >
-          <p class="api-key-error" id="api-key-error" aria-live="polite"></p>
-          <button class="btn btn-teal" id="api-key-submit" style="width: 100%;">
-            Continue →
-          </button>
-        </div>
-      </div>
-
       <div class="lg-body">
 
         <!-- ============================================================
@@ -254,10 +228,6 @@
     var printBtn      = document.getElementById('print-btn');
     var startOverBtn  = document.getElementById('start-over-btn');
     var outputError   = document.getElementById('output-error');
-    var keyOverlay    = document.getElementById('api-key-overlay');
-    var keyInput      = document.getElementById('api-key-input');
-    var keyError      = document.getElementById('api-key-error');
-    var keySubmit     = document.getElementById('api-key-submit');
     var sizeDisplay   = document.getElementById('size-display');
 
     /* --- State --- */
@@ -325,38 +295,6 @@
 
 
     /* ============================================================
-       API KEY OVERLAY
-    ============================================================ */
-
-    function showKeyOverlay(callback) {
-      keyOverlay.hidden = false;
-      keyInput.focus();
-      keySubmit._callback = callback;
-    }
-
-    function hideKeyOverlay() {
-      keyOverlay.hidden = true;
-    }
-
-    keyInput.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') keySubmit.click();
-    });
-
-    keySubmit.addEventListener('click', function () {
-      var key = keyInput.value.trim();
-      if (!key.startsWith('sk-')) {
-        keyError.textContent = 'That doesn\'t look right. API keys start with "sk-".';
-        keyInput.focus();
-        return;
-      }
-      keyError.textContent = '';
-      AI_ENGINE.saveKey(key);
-      hideKeyOverlay();
-      if (typeof keySubmit._callback === 'function') keySubmit._callback();
-    });
-
-
-    /* ============================================================
        GENERATION
     ============================================================ */
 
@@ -380,15 +318,7 @@
         },
         function onError(err) {
           thinkingEl.hidden = true;
-          if (err.code === 'INVALID_KEY' || err.message === 'NO_KEY') {
-            AI_ENGINE.clearKey();
-            outputError.textContent = 'API key issue — please check your key.';
-            setTimeout(function () {
-              outputCard.hidden = true;
-              formCard.hidden   = false;
-              showKeyOverlay(function () { generate(prompt); });
-            }, 1500);
-          } else if (err.code === 'RATE_LIMIT') {
+          if (err.code === 'RATE_LIMIT') {
             outputError.textContent = 'Too many requests — wait a moment and try again.';
           } else {
             outputError.textContent = 'Something went wrong. Try generating again.';
@@ -401,12 +331,7 @@
     }
 
     generateBtn.addEventListener('click', function () {
-      var prompt = buildPrompt();
-      if (!AI_ENGINE.hasKey()) {
-        showKeyOverlay(function () { generate(prompt); });
-      } else {
-        generate(prompt);
-      }
+      generate(buildPrompt());
     });
 
 

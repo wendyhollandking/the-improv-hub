@@ -1,30 +1,27 @@
 /* ============================================================
    ai-engine.js
-   Anthropic API integration for The Improv Hub's AI game play.
+   AI game play for The Improv Hub — routes through a Cloudflare
+   Worker proxy that holds the API key and enforces the model.
 
    Responsibilities:
-   - Store and retrieve the user's API key (sessionStorage only —
-     it clears automatically when the browser tab closes)
-   - Send messages to the Claude API and return responses
+   - Send messages to the Worker proxy and return responses
    - Manage the message history for an ongoing scene
    - Hold the system prompt for each AI-playable game
 
    How to use from a page:
-     1. Check AI_ENGINE.hasKey() — if false, prompt for key with showApiKeyPrompt()
-     2. Call AI_ENGINE.startSession(gameId, onAIMessage, onError)
-     3. If AI opens: call AI_ENGINE.aiOpenScene(promptText)
-     4. Each student turn: call AI_ENGINE.sendMessage(text)
-     5. When done: call AI_ENGINE.endSession()
+     1. Call AI_ENGINE.startSession(gameId, onAIMessage, onError)
+     2. If AI opens: call AI_ENGINE.aiOpenScene(promptText)
+     3. Each student turn: call AI_ENGINE.sendMessage(text)
+     4. When done: call AI_ENGINE.endSession()
 ============================================================ */
 
 var AI_ENGINE = (function () {
   'use strict';
 
   /* ---- Configuration ---- */
-  var SESSION_KEY = 'improv_api_key';
-  var API_URL     = 'https://api.anthropic.com/v1/messages';
-  var MODEL       = 'claude-sonnet-4-6';
-  var MAX_TOKENS  = 350;
+  /* Cloudflare Worker proxy — handles auth and forces the model */
+  var API_URL    = 'https://improv-hub-api.wendy-holland-king.workers.dev';
+  var MAX_TOKENS = 350;
 
   /* ============================================================
      SYSTEM PROMPTS
@@ -379,36 +376,11 @@ var AI_ENGINE = (function () {
 
 
   /* ============================================================
-     API KEY MANAGEMENT
-     Key lives in sessionStorage — clears when the tab closes.
-  ============================================================ */
-
-  function getKey() {
-    return sessionStorage.getItem(SESSION_KEY) || '';
-  }
-
-  function saveKey(key) {
-    sessionStorage.setItem(SESSION_KEY, key.trim());
-  }
-
-  function clearKey() {
-    sessionStorage.removeItem(SESSION_KEY);
-  }
-
-  function hasKey() {
-    return getKey().length > 0;
-  }
-
-
-  /* ============================================================
      API CALL
   ============================================================ */
 
   /* Returns a promise that resolves to the assistant's reply text */
   function callAPI(messages, gameId) {
-    var key = getKey();
-    if (!key) return Promise.reject(new Error('NO_KEY'));
-
     var systemPrompt = SYSTEM_PROMPTS[gameId];
     if (systemPrompt === undefined) {
       return Promise.reject(new Error('Unknown game: ' + gameId));
@@ -417,14 +389,9 @@ var AI_ENGINE = (function () {
     return fetch(API_URL, {
       method: 'POST',
       headers: {
-        'x-api-key':                              key,
-        'anthropic-version':                      '2023-06-01',
-        'content-type':                           'application/json',
-        /* Required header for direct browser access to the Anthropic API */
-        'anthropic-dangerous-direct-browser-access': 'true'
+        'content-type': 'application/json'
       },
       body: JSON.stringify({
-        model:      MODEL,
         max_tokens: (_session && _session.maxTokens) || MAX_TOKENS,
         system:     systemPrompt,
         messages:   messages
@@ -541,13 +508,6 @@ var AI_ENGINE = (function () {
   ============================================================ */
 
   return {
-    /* Key management */
-    getKey:    getKey,
-    saveKey:   saveKey,
-    clearKey:  clearKey,
-    hasKey:    hasKey,
-
-    /* Scene play */
     startSession:  startSession,
     aiOpenScene:   aiOpenScene,
     sendMessage:   sendMessage,

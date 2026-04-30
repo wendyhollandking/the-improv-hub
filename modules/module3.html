@@ -399,32 +399,6 @@
 
         <div class="ai-play-zone">
 
-          <!-- API key overlay -->
-          <div class="api-key-overlay" id="api-key-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="key-dialog-heading">
-            <div class="api-key-box">
-              <h3 id="key-dialog-heading">One quick thing</h3>
-              <p>
-                Playing with AI uses the Anthropic API. You'll need an API key — your teacher
-                may have one for the class, or you can get your own at console.anthropic.com.
-                <br><br>
-                Your key is only saved for this browser session and never sent anywhere except
-                directly to Anthropic.
-              </p>
-              <input
-                type="password"
-                id="api-key-input"
-                class="api-key-input"
-                placeholder="sk-ant-…"
-                autocomplete="off"
-                spellcheck="false"
-              >
-              <p class="api-key-error" id="api-key-error" aria-live="polite"></p>
-              <button class="btn btn-teal" id="api-key-submit" style="width: 100%;">
-                Let's play →
-              </button>
-            </div>
-          </div>
-
           <!-- ---- SETUP PANEL ---- -->
           <div class="ai-panel" id="ai-setup">
 
@@ -609,8 +583,6 @@
     var setupPanel    = document.getElementById('ai-setup');
     var chatPanel     = document.getElementById('ai-chat');
     var reflectPanel  = document.getElementById('ai-reflect');
-    var keyOverlay    = document.getElementById('api-key-overlay');
-
     var promptList    = document.getElementById('prompt-list');
     var customInput   = document.getElementById('custom-prompt-input');
     var startBtn      = document.getElementById('start-scene-btn');
@@ -624,10 +596,6 @@
     var roundDisplay  = document.getElementById('round-display');
     var roleHint      = document.getElementById('chat-role-hint');
     var chatError     = document.getElementById('chat-error');
-
-    var keyInput      = document.getElementById('api-key-input');
-    var keyError      = document.getElementById('api-key-error');
-    var keySubmit     = document.getElementById('api-key-submit');
 
     var playAgainBtn  = document.getElementById('play-again-btn');
     var tryPromptBtn  = document.getElementById('try-prompt-btn');
@@ -699,41 +667,6 @@
       }
       selectedPrompt = prompt;
 
-      if (!AI_ENGINE.hasKey()) {
-        showKeyOverlay();
-      } else {
-        beginGame();
-      }
-    });
-
-
-    /* ============================================================
-       API KEY OVERLAY
-    ============================================================ */
-
-    function showKeyOverlay() {
-      keyOverlay.hidden = false;
-      keyInput.focus();
-    }
-
-    function hideKeyOverlay() {
-      keyOverlay.hidden = true;
-    }
-
-    keyInput.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') keySubmit.click();
-    });
-
-    keySubmit.addEventListener('click', function () {
-      var key = keyInput.value.trim();
-      if (!key.startsWith('sk-')) {
-        keyError.textContent = 'That doesn\'t look right. Anthropic API keys start with "sk-".';
-        keyInput.focus();
-        return;
-      }
-      keyError.textContent = '';
-      AI_ENGINE.saveKey(key);
-      hideKeyOverlay();
       beginGame();
     });
 
@@ -790,16 +723,7 @@
       removeTypingIndicator();
       setWaiting(false);
 
-      if (err.code === 'INVALID_KEY' || err.message === 'NO_KEY') {
-        AI_ENGINE.clearKey();
-        chatError.textContent = 'API key issue. Please check your key and try again.';
-        setTimeout(function () {
-          chatError.textContent = '';
-          chatPanel.hidden  = true;
-          setupPanel.hidden = false;
-          showKeyOverlay();
-        }, 2000);
-      } else if (err.code === 'RATE_LIMIT') {
+      if (err.code === 'RATE_LIMIT') {
         chatError.textContent = 'Too many requests — wait a moment and try again.';
         setTimeout(function () { chatError.textContent = ''; }, 4000);
       } else {
