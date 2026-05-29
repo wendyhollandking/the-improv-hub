@@ -36,7 +36,7 @@
   };
 
   /* Build a single game card element.
-     Cards show title, description, category tags, and inline rules. */
+     Cards show title, description, category tags, inline rules, and an example. */
   function buildCard(game) {
     var article = document.createElement('article');
     article.className = 'card game-card game-card-library';
@@ -48,10 +48,28 @@
       return '<span class="tag tag-' + cat + '">' + label + '</span>';
     }).join('');
 
-    /* ---- Inline rules for the quick-expand toggle ---- */
+    /* ---- Rules ---- */
     var rulesHtml = game.rules.map(function (rule) {
       return '<li>' + rule + '</li>';
     }).join('');
+
+    /* ---- Example section (only rendered when example text exists) ---- */
+    var hasExample = !!(game.example && game.example.trim());
+    var exampleSectionHtml = hasExample
+      ? '<div class="game-example-details" id="example-' + game.id + '" hidden>' +
+          '<div class="game-detail-section">' +
+            '<h4>Example</h4>' +
+            '<p class="game-example-text">' + game.example + '</p>' +
+          '</div>' +
+        '</div>'
+      : '';
+
+    var exampleBtnHtml = hasExample
+      ? '<button class="game-toggle-btn game-example-toggle" aria-expanded="false" aria-controls="example-' + game.id + '">' +
+          '<span class="toggle-label">Example</span>' +
+          '<span class="toggle-icon" aria-hidden="true">▼</span>' +
+        '</button>'
+      : '';
 
     article.innerHTML =
       '<div class="game-card-body">' +
@@ -60,7 +78,7 @@
         (tagsHtml ? '<div class="game-card-tags">' + tagsHtml + '</div>' : '') +
       '</div>' +
 
-      /* Expandable quick-rules section */
+      /* Expandable rules section */
       '<div class="game-details" id="details-' + game.id + '" hidden>' +
         '<div class="game-detail-section">' +
           '<h4>How to play</h4>' +
@@ -68,32 +86,62 @@
         '</div>' +
       '</div>' +
 
-      '<button class="game-toggle-btn" aria-expanded="false" aria-controls="details-' + game.id + '">' +
-        '<span class="toggle-label">Show rules</span>' +
-        '<span class="toggle-icon" aria-hidden="true">▼</span>' +
-      '</button>';
+      /* Expandable example section */
+      exampleSectionHtml +
 
-    /* Toggle expand/collapse — shared function used by both card click and button click */
-    var toggleBtn = article.querySelector('.game-toggle-btn');
-    var detailsEl = article.querySelector('.game-details');
+      /* Button row — rules toggle + (optional) example toggle */
+      '<div class="game-toggle-row">' +
+        '<button class="game-toggle-btn" aria-expanded="false" aria-controls="details-' + game.id + '">' +
+          '<span class="toggle-label">Show rules</span>' +
+          '<span class="toggle-icon" aria-hidden="true">▼</span>' +
+        '</button>' +
+        exampleBtnHtml +
+      '</div>';
 
-    function toggleDetails() {
-      var isOpen = !detailsEl.hidden;
-      detailsEl.hidden = isOpen;
-      toggleBtn.setAttribute('aria-expanded', String(!isOpen));
-      toggleBtn.querySelector('.toggle-label').textContent = isOpen ? 'Show rules' : 'Hide rules';
-      toggleBtn.querySelector('.toggle-icon').textContent  = isOpen ? '▼' : '▲';
-      article.classList.toggle('is-open', !isOpen);
+    /* ---- Rules toggle ---- */
+    var rulesBtn = article.querySelector('.game-toggle-btn:not(.game-example-toggle)');
+    var rulesEl  = article.querySelector('.game-details');
+
+    function toggleRules() {
+      var isOpen = !rulesEl.hidden;
+      rulesEl.hidden = isOpen;
+      rulesBtn.setAttribute('aria-expanded', String(!isOpen));
+      rulesBtn.querySelector('.toggle-label').textContent = isOpen ? 'Show rules' : 'Hide rules';
+      rulesBtn.querySelector('.toggle-icon').textContent  = isOpen ? '▼' : '▲';
+      updateOpenState();
+    }
+
+    rulesBtn.addEventListener('click', toggleRules);
+
+    /* ---- Example toggle ---- */
+    if (hasExample) {
+      var exBtn = article.querySelector('.game-example-toggle');
+      var exEl  = article.querySelector('.game-example-details');
+
+      function toggleExample() {
+        var isOpen = !exEl.hidden;
+        exEl.hidden = isOpen;
+        exBtn.setAttribute('aria-expanded', String(!isOpen));
+        exBtn.querySelector('.toggle-label').textContent = isOpen ? 'Example' : 'Hide example';
+        exBtn.querySelector('.toggle-icon').textContent  = isOpen ? '▼' : '▲';
+        updateOpenState();
+      }
+
+      exBtn.addEventListener('click', toggleExample);
+    }
+
+    /* Card has the is-open shadow when either section is expanded */
+    function updateOpenState() {
+      var anyOpen = !rulesEl.hidden || (hasExample && !article.querySelector('.game-example-details').hidden);
+      article.classList.toggle('is-open', anyOpen);
     }
 
     /* Clicking the card body navigates to the full game detail page */
     article.addEventListener('click', function (e) {
-      if (e.target.closest('a')) return;               /* let link clicks through */
-      if (e.target.closest('.game-toggle-btn')) return; /* handled below */
+      if (e.target.closest('a')) return;
+      if (e.target.closest('.game-toggle-btn')) return;
       window.location.href = 'game.html?id=' + game.id;
     });
-
-    toggleBtn.addEventListener('click', toggleDetails);
 
     return article;
   }

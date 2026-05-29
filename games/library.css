@@ -206,7 +206,26 @@
 }
 
 
-/* ---- Toggle button at the bottom of each card ---- */
+/* ---- Toggle row — holds rules + example buttons side by side ---- */
+
+.game-toggle-row {
+  display: flex;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Each button in the row shares the width equally */
+.game-toggle-row .game-toggle-btn {
+  flex: 1;
+  border-top: none; /* the row provides the top border */
+}
+
+/* Vertical divider between the two buttons */
+.game-toggle-row .game-toggle-btn + .game-toggle-btn {
+  border-left: 1px solid var(--color-border);
+}
+
+
+/* ---- Toggle button ---- */
 
 .game-toggle-btn {
   display: flex;
@@ -216,7 +235,6 @@
   padding: var(--space-sm) var(--space-md);
   background-color: #f8f8f8;
   border: none;
-  border-top: 1px solid var(--color-border);
   color: var(--color-gray-text);
   font-family: var(--font-sans);
   font-size: 0.8rem;
@@ -237,6 +255,30 @@
 
 .game-toggle-btn[aria-expanded="true"] .toggle-icon {
   transform: rotate(180deg);
+}
+
+
+/* ---- Example expandable section ---- */
+
+.game-example-details {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-md);
+}
+
+.game-example-details[hidden] {
+  display: none;
+}
+
+/* Teal left-border callout block, matching the modal example style */
+.game-example-text {
+  background: #f7f7fb;
+  border-left: 3px solid var(--color-teal);
+  padding: var(--space-md);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-dark-text);
+  margin: 0;
 }
 
 
