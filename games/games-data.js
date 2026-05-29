@@ -19,6 +19,8 @@
                     "warm-ups", "yes-and", "characters", "scenes",
                     "comedy", "musical", "solo-friendly"
    - aiPlayable:  true/false
+   - videoId:     YouTube video ID to embed on the game detail page (optional)
+   - format:      'short' for YouTube Shorts (9:16 embed), omit for regular (16:9)
    - module:      which module introduces this game (1–6), or null
 ============================================================ */
 
@@ -694,6 +696,7 @@ var GAMES_DATA = [
     players: '5+',
     categories: ['characters', 'scenes'],
     aiPlayable: false,
+    videoId: 'ck_bzb-t-r4',
     module: null
   },
 
@@ -789,6 +792,8 @@ var GAMES_DATA = [
     players: '4+',
     categories: ['scenes'],
     aiPlayable: false,
+    videoId: 'aUtfvHq1_VI',
+    format: 'short',
     module: null
   },
 
@@ -1133,6 +1138,8 @@ var GAMES_DATA = [
     players: '3+',
     categories: ['scenes', 'comedy'],
     aiPlayable: false,
+    videoId: '1Y72O2Kdcds',
+    format: 'short',
     module: null
   },
 
@@ -1534,6 +1541,110 @@ var GAMES_DATA = [
     categories: ['comedy'],
     aiPlayable: true,
     module: 6
+  },
+
+  /* ================================================================
+     ADDITIONAL GAMES (no module)
+  ================================================================ */
+
+  {
+    id: 'mafia',
+    title: 'Mafia',
+    description: 'A group guessing game where the "mafia" secretly eliminates players while the town tries to figure out who they are.',
+    goodFor: 'Observation, deception, persuasion, group dynamics, dramatic tension',
+    energyLevel: 'Medium',
+    timeEstimate: 'Long',
+    example: 'Everyone closes their eyes. The narrator says "Mafia, open your eyes. Choose someone to eliminate." Two players silently point at Marcus. "Mafia, close your eyes. Town, wake up. Bad news — Marcus didn\'t make it through the night." Marcus dramatically clutches his chest and collapses. Now the town has to debate: who looks suspicious? Priya says she noticed someone fidgeting during the night phase. Jordan says Priya is deflecting. The accusations fly until someone gets voted out — and the town finds out if they caught a mafia member or lost one of their own.',
+    rules: [
+      'One person is the narrator and does not play.',
+      'The narrator secretly assigns roles: 2–3 mafia members, 1 detective (optional), 1 doctor (optional), and the rest are townspeople.',
+      'Night phase: Everyone closes their eyes. The narrator calls on the mafia to silently choose someone to eliminate. If there\'s a detective, they silently point at someone to investigate (narrator nods yes or no). If there\'s a doctor, they point at someone to save.',
+      'Day phase: Everyone opens their eyes. The narrator announces who was eliminated (unless the doctor saved them). That player is out and cannot speak.',
+      'The town discusses and debates who they think the mafia is. Players can accuse, defend, and argue.',
+      'The town votes to eliminate one suspect. That player reveals their role and is out.',
+      'Repeat night and day phases until either all mafia members are caught (town wins) or mafia members equal or outnumber townspeople (mafia wins).'
+    ],
+    variations: [
+      'Silent Mafia: Eliminated players can\'t reveal their role — adds more mystery.',
+      'Speed Mafia: Set a 2-minute timer for the day phase discussion to keep the pace fast.',
+      'Add a "Jester" role — a player who wins if they get voted out by the town. Adds chaos.',
+      'Narrated Mafia: The narrator tells a dramatic story each night ("It was a dark and stormy evening in the village...") to set the mood.'
+    ],
+    prompts: [],
+    players: '7+',
+    categories: ['characters', 'scenes'],
+    aiPlayable: false,
+    module: null
+  },
+
+  {
+    id: 'wax-museum',
+    title: 'Wax Museum',
+    description: 'Players freeze as wax statues that secretly come alive when the museum curator isn\'t looking.',
+    goodFor: 'Physicality, body control, stealth, awareness, ensemble play',
+    energyLevel: 'Medium',
+    timeEstimate: 'Medium',
+    example: 'The curator (teacher) announces "Welcome to my beautiful wax museum!" and gestures proudly at the frozen statues. Each player has chosen a pose — one is mid-sneeze, one is flexing, one is reaching for something on a high shelf. The curator turns away to "polish a display case" and suddenly the statues come alive: sneaking around, switching spots, making faces. The curator spins back — everyone freezes. The curator squints suspiciously: "I could have SWORN that statue was over there..." She turns away again and chaos resumes.',
+    rules: [
+      'One person is the museum curator (usually the teacher or leader for the first round).',
+      'Everyone else is a wax statue. Each player chooses a frozen pose and holds it.',
+      'When the curator is watching, all statues must be completely still and silent.',
+      'When the curator turns away or leaves the "room," statues come alive — they can move, talk, switch places, and interact.',
+      'When the curator turns back, everyone must freeze instantly in whatever position they\'re in.',
+      'If the curator catches anyone moving, that player is "melted" and is out.',
+      'The curator can react to changes they notice ("Wait — wasn\'t there a statue here before?").',
+      'Last statue standing becomes the next curator.'
+    ],
+    variations: [
+      'Themed Museum: All statues must be from a category — sports figures, historical characters, animals, etc.',
+      'Talking Statues: When alive, statues must stay in character based on their pose (the flexing statue talks like a bodybuilder, etc.).',
+      'Musical Museum: Play music — statues can only move when the music plays. Curator controls the music.',
+      'Guided Tour: The curator gives a "tour" describing each statue while players try not to laugh or break character.'
+    ],
+    prompts: [],
+    players: '5+',
+    categories: ['warm-ups', 'characters'],
+    aiPlayable: false,
+    module: null
+  },
+
+  {
+    id: 'bus-driver',
+    title: 'Bus Driver',
+    description: 'Passengers board a bus one at a time, each with an over-the-top character — and everyone on the bus catches their personality.',
+    goodFor: 'Character adoption, exaggeration, adaptability, ensemble energy, physicality',
+    energyLevel: 'High',
+    timeEstimate: 'Medium',
+    example: 'The bus driver is cheerfully driving along. First passenger gets on: they\'re an extremely paranoid conspiracy theorist who thinks the bus is being followed. Slowly, the driver starts checking the mirrors nervously. Second passenger boards: an opera singer who communicates entirely in dramatic singing. Now the driver and the paranoid passenger are both singing about government surveillance. By the time the fourth passenger arrives — a robot — everyone on the bus is a singing, paranoid robot. Pure chaos.',
+    rules: [
+      'Set up chairs in two rows to represent a bus. One player starts as the bus driver.',
+      'The first passenger boards the bus with a strong, exaggerated character trait (a voice, a physicality, an attitude, an obsession).',
+      'The bus driver and all other passengers gradually take on that character trait.',
+      'Once everyone has fully adopted the trait, a new passenger boards with a completely different character trait.',
+      'Everyone on the bus — including the driver — now takes on the new trait (dropping the old one).',
+      'Continue until all players have boarded the bus.',
+      'Optional: after the last passenger boards, the driver announces "Last stop!" and everyone exits in character.'
+    ],
+    variations: [
+      'Layering Version: Instead of replacing traits, each new trait adds to the previous ones. By the end, everyone has 4–5 traits stacked on top of each other.',
+      'Destination Version: The driver announces a destination and everyone must act like they\'re going there ("Next stop: the moon!" or "Next stop: a haunted house!").',
+      'Emotion Bus: Instead of full characters, each passenger brings a single extreme emotion.',
+      'Silent Bus: Players can only use physicality and sounds — no words allowed.'
+    ],
+    prompts: [
+      'An extremely clumsy person who keeps dropping things',
+      'Someone who thinks they\'re a celebrity and everyone should recognize them',
+      'A person who is terrified of speed and screams at every bump',
+      'Someone who narrates everything happening around them like a nature documentary',
+      'A person who can\'t stop laughing at absolutely nothing',
+      'Someone who moves in slow motion and speaks very... slowly...',
+      'A passenger who thinks the bus is a spaceship',
+      'A very dramatic person who treats every moment like a soap opera'
+    ],
+    players: '5+',
+    categories: ['characters', 'warm-ups'],
+    aiPlayable: false,
+    module: null
   }
 
 ];

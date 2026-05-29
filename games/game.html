@@ -94,6 +94,12 @@
           <!-- Good for + category tags -->
           <div class="game-page-meta" id="game-page-meta"></div>
 
+          <!-- Video demo (shown only when game has a videoId) -->
+          <section class="game-page-section game-page-video" id="game-video-section" hidden>
+            <h2>Watch it in action</h2>
+            <div id="game-page-video"></div>
+          </section>
+
           <!-- Rules -->
           <section class="game-page-section" id="game-rules-section" aria-labelledby="rules-heading">
             <h2 id="rules-heading">How to play</h2>
@@ -226,6 +232,28 @@
         metaHtml += '<div class="game-category-tags">' + tagsHtml + '</div>';
       }
       document.getElementById('game-page-meta').innerHTML = metaHtml;
+
+      /* ---- Video demo ---- */
+      if (game.videoId) {
+        var videoEl = document.getElementById('game-page-video');
+        if (game.format === 'short') {
+          /* YouTube Short — vertical 9:16 container, centered */
+          videoEl.innerHTML =
+            '<div style="max-width:350px;aspect-ratio:9/16;margin:0 auto;">' +
+              '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + game.videoId + '" ' +
+                'title="' + game.title + ' demo" frameborder="0" allowfullscreen></iframe>' +
+            '</div>';
+        } else {
+          /* Regular video — responsive 16:9 container */
+          videoEl.innerHTML =
+            '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">' +
+              '<iframe style="position:absolute;inset:0;width:100%;height:100%;" ' +
+                'src="https://www.youtube.com/embed/' + game.videoId + '" ' +
+                'title="' + game.title + ' demo" frameborder="0" allowfullscreen></iframe>' +
+            '</div>';
+        }
+        document.getElementById('game-video-section').hidden = false;
+      }
 
       /* ---- Rules ---- */
       var rulesEl = document.getElementById('game-page-rules');

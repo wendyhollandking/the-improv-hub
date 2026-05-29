@@ -181,6 +181,16 @@
   color: var(--color-white);
 }
 
+/* "Short" badge for YouTube Shorts */
+.badge-short {
+  background: #e8f4e8;
+  color: #246024;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
 
 /* ---- Responsive ---- */
 
